@@ -44,7 +44,7 @@ export const projects: Project[] = [
       'Orientado a equipos técnicos reales',
       'Experiencia laboral aplicada al código',
     ],
-    demoUrl: '#',
+    demoUrl: 'https://inventory-orders-dashboard-git-main-manumost93s-projects.vercel.app',
     githubUrl: 'https://github.com/Manumost93/inventory-orders-dashboard',
   },
   {
