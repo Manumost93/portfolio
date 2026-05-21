@@ -1,0 +1,127 @@
+import { motion } from 'framer-motion';
+import { ArrowDown, Mail, Download, ChevronRight } from 'lucide-react';
+import { profile } from '../data/profile';
+
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+export default function Hero() {
+  return (
+    <section id="hero" className="min-h-[85vh] flex flex-col justify-center py-12">
+      {/* Availability badge */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center gap-2 mb-8"
+      >
+        <span className="flex items-center gap-2 text-xs font-mono border border-emerald-500/30 bg-emerald-500/8 text-emerald-400 px-3 py-1.5 rounded-full">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          {profile.availabilityLabel}
+        </span>
+      </motion.div>
+
+      {/* Main heading */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+      >
+        <p className="text-slate-400 text-base md:text-lg font-mono mb-2">Hola, soy</p>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4">
+          Manuel{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+            Honrado
+          </span>{' '}
+          Vega
+        </h1>
+        <p className="text-lg md:text-xl text-slate-300 font-medium mb-6">{profile.tagline}</p>
+      </motion.div>
+
+      {/* Bio */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-slate-400 text-sm md:text-base max-w-2xl leading-relaxed mb-10"
+      >
+        {profile.bio}
+      </motion.p>
+
+      {/* CTA buttons */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="flex flex-wrap gap-3 mb-14"
+      >
+        <button
+          onClick={() => scrollTo('projects')}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-all hover:shadow-lg hover:shadow-blue-600/20"
+        >
+          Ver proyectos
+          <ChevronRight size={15} />
+        </button>
+
+        <a
+          href={profile.email}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-slate-200 text-sm font-medium transition-all"
+        >
+          <Mail size={15} />
+          Contactar conmigo
+        </a>
+
+        {/* TODO: añade el archivo PDF del CV en /public/CV_Manuel_Honrado.pdf */}
+        <a
+          href={profile.cv}
+          download
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 bg-transparent hover:bg-white/5 text-slate-400 text-sm font-medium transition-all"
+        >
+          <Download size={15} />
+          Descargar CV
+        </a>
+      </motion.div>
+
+      {/* Terminal block */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="max-w-xl"
+      >
+        <div className="rounded-xl border border-white/10 bg-slate-950/60 backdrop-blur-sm overflow-hidden">
+          <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/8 bg-white/3">
+            <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+            <span className="ml-2 text-xs text-slate-500 font-mono">terminal</span>
+          </div>
+          <div className="p-4 space-y-1.5">
+            {profile.terminalLines.map((line, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className="text-blue-400 font-mono text-xs select-none">{'>'}</span>
+                <span className="text-slate-300 font-mono text-xs">{line}</span>
+              </div>
+            ))}
+            <div className="flex items-center gap-2 mt-1">
+              <span className="text-blue-400 font-mono text-xs select-none">{'>'}</span>
+              <span className="w-1.5 h-3.5 bg-blue-400 animate-pulse rounded-sm" />
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Scroll hint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="mt-16 flex items-center gap-2 text-slate-600 text-xs"
+      >
+        <ArrowDown size={13} className="animate-bounce" />
+        <span>Desplázate para explorar</span>
+      </motion.div>
+    </section>
+  );
+}
