@@ -26,7 +26,7 @@ export const projects: Project[] = [
       'CRUD completo con Entity Framework',
       'Consumo de API desde cliente',
     ],
-    demoUrl: '#',
+    demoUrl: 'https://pfc-histolinea.vercel.app',
     githubUrl: 'https://github.com/Manumost93/pfc-histolinea',
   },
   {
