@@ -3,7 +3,7 @@
 > Personal portfolio website built with React, TypeScript, Vite and Tailwind CSS.  
 > Designed as a dark technical dashboard to showcase my skills, projects and professional profile.
 
-**Live:** _coming soon_  
+**Live:** https://portfolio-kohl-seven-15tnfk4ujq.vercel.app  
 **Author:** Manuel Honrado Vega  
 **Email:** myjhonradov@gmail.com  
 **LinkedIn:** [linkedin.com/in/manuel-honrado-desarrollador](https://www.linkedin.com/in/manuel-honrado-desarrollador)  
