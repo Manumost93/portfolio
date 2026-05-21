@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, BookOpen } from 'lucide-react';
-import { education } from '../data/experience';
+import { GraduationCap, BookOpen, Award } from 'lucide-react';
+import { education, certifications } from '../data/experience';
 import SectionHeader from './SectionHeader';
 
 export default function Education() {
@@ -9,10 +9,11 @@ export default function Education() {
       <SectionHeader
         label="Formación"
         title="Base académica"
-        description="Formación reglada y aprendizaje complementario orientado al desarrollo de software y sistemas técnicos."
+        description="Formación reglada, certificaciones y aprendizaje complementario orientado al desarrollo de software y sistemas técnicos."
       />
 
-      <div className="space-y-5">
+      {/* Degree */}
+      <div className="space-y-5 mb-10">
         {education.map((item, i) => (
           <motion.div
             key={item.id}
@@ -57,6 +58,43 @@ export default function Education() {
           </motion.div>
         ))}
       </div>
+
+      {/* Certifications */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="flex items-center gap-2 mb-5">
+          <Award size={14} className="text-amber-400" />
+          <span className="text-xs font-mono uppercase tracking-widest text-amber-400">Certificaciones y bootcamps</span>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {certifications.map((cert, i) => (
+            <motion.div
+              key={cert.id}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              whileHover={{ y: -2 }}
+              className="rounded-xl border border-white/10 bg-white/4 backdrop-blur-sm p-4 hover:bg-white/7 transition-all"
+            >
+              <div className={`inline-flex items-center gap-1.5 text-[10px] font-mono border px-2 py-0.5 rounded-full mb-3 ${cert.color}`}>
+                <Award size={9} />
+                Certificado
+              </div>
+              <p className="text-white text-xs font-semibold leading-snug mb-1">{cert.name}</p>
+              <div className="flex items-center justify-between mt-2">
+                <p className="text-slate-500 text-[10px]">{cert.issuer}</p>
+                <span className="text-slate-600 text-[10px] font-mono">{cert.period}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 }

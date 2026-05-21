@@ -22,7 +22,7 @@ export const experience: ExperienceItem[] = [
     id: 1,
     title: 'Técnico de Mantenimiento',
     company: 'IKEA / Ingka',
-    period: '2025 – Actualidad',
+    period: '2016 – Actualidad',
     description:
       'Experiencia en mantenimiento preventivo y correctivo, gestión de incidencias, instalaciones, coordinación con equipos, proveedores y resolución de problemas en entorno técnico real.',
     highlights: [
@@ -63,6 +63,59 @@ export const experience: ExperienceItem[] = [
       'Aprendizaje continuo y autónomo',
     ],
     type: 'personal',
+  },
+];
+
+export interface CertificationItem {
+  id: number;
+  name: string;
+  issuer: string;
+  period: string;
+  color: string;
+}
+
+export const certifications: CertificationItem[] = [
+  {
+    id: 1,
+    name: 'Azure AI Fundamentals (AI-900)',
+    issuer: 'Microsoft',
+    period: '2024',
+    color: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
+  },
+  {
+    id: 2,
+    name: 'Big Data e Inteligencia Artificial',
+    issuer: 'Universidad Alfonso X el Sabio',
+    period: '2024',
+    color: 'text-purple-400 bg-purple-400/10 border-purple-400/20',
+  },
+  {
+    id: 3,
+    name: 'Certificado en Java',
+    issuer: 'Universidad Europea',
+    period: '2023',
+    color: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
+  },
+  {
+    id: 4,
+    name: 'Certificado en Python',
+    issuer: 'Universidad Europea',
+    period: '2023',
+    color: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+  },
+  {
+    id: 5,
+    name: 'Bootcamp Fullstack (1 año)',
+    issuer: 'Education IT',
+    period: '2022 – 2023',
+    color: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
+  },
+  {
+    id: 6,
+    name: 'Bases de la Ciberseguridad (1 año y medio)',
+    issuer: 'Education IT',
+    period: '2022 – 2023',
+    color: 'text-red-400 bg-red-400/10 border-red-400/20',
   },
 ];
 
