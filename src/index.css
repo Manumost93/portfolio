@@ -14,9 +14,9 @@
     padding: 0;
     background-color: #080a0d;
     background-image:
-      radial-gradient(ellipse at 15% 10%, rgba(30, 41, 59, 0.25) 0%, transparent 55%),
-      radial-gradient(ellipse at 85% 90%, rgba(15, 23, 42, 0.35) 0%, transparent 55%),
-      radial-gradient(ellipse at 50% 50%, rgba(8, 10, 18, 0.8) 0%, transparent 80%);
+      radial-gradient(ellipse at 15% 10%, rgba(51, 65, 85, 0.4) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 90%, rgba(30, 41, 59, 0.45) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(8, 10, 18, 0.7) 0%, transparent 80%);
     color: #e2e8f0;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -27,26 +27,28 @@
 }
 
 @layer components {
-  /* Metallic card — simula superficie de acero con highlight superior y sombra inferior */
+  /* Metallic card — superficie de acero pulido con highlight fuerte */
   .card-metal {
-    background: rgba(12, 14, 20, 0.75);
-    border: 1px solid rgba(100, 116, 139, 0.18);
+    background: rgba(14, 17, 26, 0.82);
+    border: 1px solid rgba(148, 163, 184, 0.28);
     box-shadow:
-      0 1px 0 rgba(203, 213, 225, 0.05) inset,
-      0 -1px 0 rgba(0, 0, 0, 0.3) inset,
-      0 4px 32px rgba(0, 0, 0, 0.45),
-      0 1px 4px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(12px);
+      0 1px 0 rgba(226, 232, 240, 0.14) inset,
+      0 -1px 0 rgba(0, 0, 0, 0.4) inset,
+      0 0 20px rgba(148, 163, 184, 0.07),
+      0 4px 32px rgba(0, 0, 0, 0.5),
+      0 1px 4px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(14px);
     transition: border-color 0.2s, box-shadow 0.2s;
   }
 
   .card-metal:hover {
-    border-color: rgba(148, 163, 184, 0.32);
+    border-color: rgba(203, 213, 225, 0.5);
     box-shadow:
-      0 1px 0 rgba(203, 213, 225, 0.10) inset,
-      0 -1px 0 rgba(0, 0, 0, 0.35) inset,
-      0 8px 40px rgba(0, 0, 0, 0.5),
-      0 0 0 1px rgba(148, 163, 184, 0.08);
+      0 1px 0 rgba(226, 232, 240, 0.25) inset,
+      0 -1px 0 rgba(0, 0, 0, 0.45) inset,
+      0 0 28px rgba(148, 163, 184, 0.18),
+      0 8px 40px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(203, 213, 225, 0.12);
   }
 
   /* Borde metálico con gradiente tipo cromo */
@@ -63,9 +65,9 @@
     border-radius: inherit;
     background: linear-gradient(
       135deg,
-      rgba(148, 163, 184, 0.25) 0%,
-      rgba(51, 65, 85, 0.08) 40%,
-      rgba(148, 163, 184, 0.15) 100%
+      rgba(203, 213, 225, 0.45) 0%,
+      rgba(71, 85, 105, 0.12) 40%,
+      rgba(203, 213, 225, 0.3) 100%
     );
     z-index: -1;
   }
@@ -75,19 +77,19 @@
   .scrollbar-thin::-webkit-scrollbar { width: 4px; }
   .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background: rgba(100, 116, 139, 0.3);
+    background: rgba(148, 163, 184, 0.4);
     border-radius: 2px;
   }
 
-  /* Texto metálico degradado */
+  /* Texto metálico degradado — más brillante */
   .text-metal {
-    background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 50%, #e2e8f0 100%);
+    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 35%, #f8fafc 65%, #94a3b8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Shimmer sweep animation */
+  /* Shimmer sweep animation — más visible y rápida */
   @keyframes shimmer {
     0%   { background-position: -200% center; }
     100% { background-position: 200% center; }
@@ -96,10 +98,20 @@
   .shimmer {
     background: linear-gradient(90deg,
       transparent 0%,
-      rgba(148, 163, 184, 0.08) 50%,
+      rgba(226, 232, 240, 0.22) 50%,
       transparent 100%
     );
     background-size: 200% auto;
-    animation: shimmer 3s linear infinite;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Pulso de glow exterior para elementos activos */
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(148,163,184,0.4), 0 0 20px rgba(148,163,184,0.15); }
+    50%       { box-shadow: 0 0 16px rgba(203,213,225,0.6), 0 0 32px rgba(148,163,184,0.25); }
+  }
+
+  .glow-active {
+    animation: glow-pulse 2.5s ease-in-out infinite;
   }
 }

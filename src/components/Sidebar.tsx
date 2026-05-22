@@ -112,20 +112,20 @@ export default function Sidebar() {
                   isActive ? 'text-slate-200' : 'text-slate-600 hover:text-slate-300'
                 }`}
                 style={isActive ? {
-                  background: 'rgba(100,116,139,0.12)',
-                  border: '1px solid rgba(100,116,139,0.22)',
-                  boxShadow: '0 1px 0 rgba(203,213,225,0.05) inset',
+                  background: 'rgba(148,163,184,0.14)',
+                  border: '1px solid rgba(203,213,225,0.35)',
+                  boxShadow: '0 1px 0 rgba(226,232,240,0.12) inset, 0 0 12px rgba(148,163,184,0.12)',
                 } : {
                   border: '1px solid transparent',
                 }}
               >
                 {isActive && (
-                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 rounded-r-full"
-                    style={{ background: 'linear-gradient(180deg, #cbd5e1, #64748b)' }} />
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 rounded-r-full"
+                    style={{ background: 'linear-gradient(180deg, #f1f5f9, #94a3b8)', boxShadow: '0 0 8px rgba(203,213,225,0.8)' }} />
                 )}
-                <Icon size={15} className={isActive ? 'text-slate-400' : 'text-slate-700 group-hover:text-slate-500 transition'} />
+                <Icon size={15} className={isActive ? 'text-slate-200' : 'text-slate-700 group-hover:text-slate-500 transition'} />
                 {label}
-                {isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-slate-400" />}
+                {isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-slate-300" style={{ boxShadow: '0 0 6px rgba(203,213,225,0.9)' }} />}
               </button>
             );
           })}

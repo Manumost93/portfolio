@@ -36,9 +36,9 @@ function HeroOrb() {
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
       <div
-        className="absolute w-[500px] h-[500px] rounded-full opacity-8 blur-3xl"
+        className="absolute w-[500px] h-[500px] rounded-full opacity-20 blur-3xl"
         style={{
-          background: 'radial-gradient(circle, #475569 0%, #1e293b 50%, transparent 70%)',
+          background: 'radial-gradient(circle, #94a3b8 0%, #334155 50%, transparent 70%)',
           top: '5%',
           right: '-10%',
           transform: `translate(${mouse.x}px, ${mouse.y}px)`,
@@ -46,9 +46,9 @@ function HeroOrb() {
         }}
       />
       <div
-        className="absolute w-[300px] h-[300px] rounded-full opacity-5 blur-2xl"
+        className="absolute w-[300px] h-[300px] rounded-full opacity-15 blur-2xl"
         style={{
-          background: 'radial-gradient(circle, #64748b 0%, transparent 70%)',
+          background: 'radial-gradient(circle, #cbd5e1 0%, transparent 70%)',
           bottom: '10%',
           left: '5%',
           transform: `translate(${-mouse.x * 0.5}px, ${-mouse.y * 0.5}px)`,
@@ -88,7 +88,7 @@ export default function Hero() {
         <p className="text-slate-400 text-base md:text-lg font-mono mb-2">Hola, soy</p>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-5" style={{ color: '#e2e8f0' }}>
           Manuel{' '}
-          <span className="text-metal">
+          <span className="text-metal" style={{ filter: 'drop-shadow(0 0 18px rgba(203,213,225,0.5))' }}>
             Honrado
           </span>{' '}
           Vega

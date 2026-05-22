@@ -36,8 +36,8 @@ export default function SkillLevels() {
                 transition={{ duration: 0.9, delay: i * 0.06 + 0.2, ease: 'easeOut' }}
                 className="h-full rounded-full relative overflow-hidden"
                 style={{
-                  background: 'linear-gradient(90deg, #334155 0%, #64748b 40%, #94a3b8 70%, #cbd5e1 100%)',
-                  boxShadow: '0 0 6px rgba(148,163,184,0.3)',
+                  background: 'linear-gradient(90deg, #475569 0%, #94a3b8 40%, #e2e8f0 75%, #ffffff 100%)',
+                  boxShadow: '0 0 10px rgba(203,213,225,0.6), 0 0 20px rgba(148,163,184,0.3)',
                 }}
               >
                 {/* Shimmer sweep */}

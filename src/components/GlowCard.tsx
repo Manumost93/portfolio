@@ -3,7 +3,6 @@ import { useRef, useState, type ReactNode, type MouseEvent } from 'react';
 interface GlowCardProps {
   children: ReactNode;
   className?: string;
-  // plata por defecto — más metálico que azul puro
   glowColor?: string;
 }
 
@@ -26,14 +25,14 @@ export default function GlowCard({ children, className = '', glowColor = '148,16
       onMouseLeave={() => setHovered(false)}
       className={`relative overflow-hidden ${className}`}
       style={hovered ? {
-        background: `radial-gradient(300px circle at ${pos.x}px ${pos.y}px, rgba(${glowColor},0.08), transparent 65%)`,
+        background: `radial-gradient(350px circle at ${pos.x}px ${pos.y}px, rgba(${glowColor},0.14), transparent 65%)`,
       } : undefined}
     >
       {hovered && (
         <div
           className="pointer-events-none absolute inset-0 rounded-[inherit] z-0"
           style={{
-            background: `radial-gradient(200px circle at ${pos.x}px ${pos.y}px, rgba(${glowColor},0.13), transparent 55%)`,
+            background: `radial-gradient(220px circle at ${pos.x}px ${pos.y}px, rgba(${glowColor},0.24), transparent 55%)`,
           }}
         />
       )}

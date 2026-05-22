@@ -7,7 +7,7 @@ interface Particle {
   vy: number;
   radius: number;
   opacity: number;
-  silver: boolean; // true = plata, false = azul acero
+  silver: boolean;
 }
 
 export default function AnimatedBackground() {
@@ -21,8 +21,8 @@ export default function AnimatedBackground() {
 
     let animId: number;
     const particles: Particle[] = [];
-    const COUNT = 60;
-    const MAX_DIST = 155;
+    const COUNT = 70;
+    const MAX_DIST = 160;
 
     function resize() {
       if (!canvas) return;
@@ -34,11 +34,11 @@ export default function AnimatedBackground() {
       return {
         x: Math.random() * (canvas?.width ?? window.innerWidth),
         y: Math.random() * (canvas?.height ?? window.innerHeight),
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        radius: Math.random() * 1.4 + 0.4,
-        opacity: Math.random() * 0.35 + 0.1,
-        silver: Math.random() > 0.35, // 65% partículas plateadas, 35% azul acero
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        radius: Math.random() * 1.8 + 0.5,
+        opacity: Math.random() * 0.55 + 0.2,
+        silver: Math.random() > 0.3,
       };
     }
 
@@ -60,8 +60,8 @@ export default function AnimatedBackground() {
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
-        // Color: plata (148,163,184) o azul acero (71,85,105)
-        const r = p.silver ? '148,163,184' : '71,85,105';
+        // plata brillante o acero medio
+        const r = p.silver ? '203,213,225' : '100,116,139';
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
@@ -75,13 +75,12 @@ export default function AnimatedBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < MAX_DIST) {
-            const alpha = (1 - dist / MAX_DIST) * 0.09;
-            // Líneas de conexión plateadas
+            const alpha = (1 - dist / MAX_DIST) * 0.18;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(100,116,139,${alpha})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(148,163,184,${alpha})`;
+            ctx.lineWidth = 0.6;
             ctx.stroke();
           }
         }
