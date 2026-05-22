@@ -1,9 +1,54 @@
+import { useRef, useState, type ReactNode, type MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, ChevronRight } from 'lucide-react';
 import { projects } from '../data/projects';
 import SectionHeader from './SectionHeader';
 import GlowCard from './GlowCard';
 import { GithubIcon } from './BrandIcons';
+
+function TiltCard({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [style, setStyle] = useState({
+    transform: 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)',
+  });
+  const [shine, setShine] = useState({ x: 50, y: 50, opacity: 0 });
+
+  const onMove = (e: MouseEvent<HTMLDivElement>) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    const nx  = (e.clientX - rect.left)  / rect.width;
+    const ny  = (e.clientY - rect.top)   / rect.height;
+    const rx  = (ny - 0.5) * -14;
+    const ry  = (nx - 0.5) *  14;
+    setStyle({ transform: `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.03,1.03,1.03)` });
+    setShine({ x: nx * 100, y: ny * 100, opacity: 0.18 });
+  };
+
+  const onLeave = () => {
+    setStyle({ transform: 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)' });
+    setShine(p => ({ ...p, opacity: 0 }));
+  };
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      style={{ ...style, transition: 'transform 0.18s ease', transformStyle: 'preserve-3d', position: 'relative' }}
+    >
+      {children}
+      {/* Shine overlay */}
+      <div
+        className="absolute inset-0 rounded-2xl pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at ${shine.x}% ${shine.y}%, rgba(226,232,240,${shine.opacity}), transparent 65%)`,
+          transition: 'opacity 0.3s',
+          zIndex: 20,
+        }}
+      />
+    </div>
+  );
+}
 
 function ProjectMockup({ type }: { type: string }) {
   if (type === 'Fullstack App') {
@@ -108,7 +153,8 @@ export default function Projects() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.07 }}
           >
-            <GlowCard className="group card-metal rounded-2xl p-5 hover:border-slate-500/40 transition-all h-full" glowColor="148,163,184">
+            <TiltCard>
+            <GlowCard className="group card-metal rounded-2xl p-5 transition-all h-full" glowColor="148,163,184">
               <div className="mb-4">
                 <ProjectMockup type={project.type} />
               </div>
@@ -164,6 +210,7 @@ export default function Projects() {
                 ))}
               </div>
             </GlowCard>
+            </TiltCard>
           </motion.div>
         ))}
       </div>
