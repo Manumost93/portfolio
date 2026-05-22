@@ -1,113 +1,135 @@
-# Manuel Honrado Vega — Personal Portfolio
+# Manuel Honrado Vega — Portfolio Personal
 
-> Personal portfolio website built with React, TypeScript, Vite and Tailwind CSS.  
-> Designed as a dark technical dashboard to showcase my skills, projects and professional profile.
+> Portfolio web personal construido con React, TypeScript, Vite y Tailwind CSS.
+> Diseñado como un dashboard técnico oscuro para mostrar proyectos, habilidades y perfil profesional.
 
-**Live:** https://portfolio-kohl-seven-15tnfk4ujq.vercel.app  
-**Author:** Manuel Honrado Vega  
-**Email:** myjhonradov@gmail.com  
-**LinkedIn:** [linkedin.com/in/manuel-honrado-desarrollador](https://www.linkedin.com/in/manuel-honrado-desarrollador)  
+**Web:** https://portfolio-kohl-seven-15tnfk4ujq.vercel.app
+**Autor:** Manuel Honrado Vega
+**Email:** myjhonradov@gmail.com
+**LinkedIn:** [linkedin.com/in/manuel-honrado-desarrollador](https://www.linkedin.com/in/manuel-honrado-desarrollador)
 **GitHub:** [github.com/Manumost93](https://github.com/Manumost93)
 
 ---
 
-## About
+## Sobre el proyecto
 
-This portfolio presents my profile as a **Junior Fullstack Developer** with a hybrid background:
+Este portfolio presenta mi perfil como **Desarrollador Junior Fullstack** con un background híbrido:
 
-- Software development in React, TypeScript and ASP.NET Core / .NET
-- Real technical experience in maintenance, installations, operations and facility environments
+- Desarrollo de software en React, TypeScript y ASP.NET Core / .NET
+- Experiencia técnica real en mantenimiento, instalaciones, operaciones y entornos facility
 
-The visual design is inspired by industrial dashboards and SaaS dark interfaces — professional, clean and technical. Built as a single-page application with smooth animations, responsive layout and a sidebar navigation.
+El diseño visual está inspirado en dashboards industriales e interfaces SaaS oscuras — profesional, limpio y técnico. Construido como una Single Page Application con animaciones fluidas, layout responsive y navegación por sidebar.
 
 ---
 
-## Tech Stack
+## Tecnologías utilizadas
 
-| Layer | Technology |
+| Capa | Tecnología |
 |---|---|
 | Framework | React 18 |
-| Language | TypeScript |
-| Build tool | Vite |
-| Styling | Tailwind CSS v3 |
-| Animations | Framer Motion |
-| Icons | Lucide React |
-| Package manager | npm |
+| Lenguaje | TypeScript |
+| Bundler | Vite |
+| Estilos | Tailwind CSS v3 |
+| Animaciones | Framer Motion |
+| Iconos | Lucide React |
+| Gestor de paquetes | npm |
 
 ---
 
-## Features
+## Funcionalidades y secciones
 
-- **Hero section** — Introduction, availability badge, CTA buttons and interactive terminal status block
-- **Quick stats** — Animated metric cards showing experience, projects, technologies and commitment
-- **Projects showcase** — 5 project cards with visual UI mockups, tech stack pills and direct GitHub links
-- **Tech stack grid** — Technologies organized by category: Languages, Frontend, Backend & Data, Tools
-- **Skill levels** — Animated progress bars with honest junior-level self-assessment
-- **Interest areas** — 5 professional focus cards: Web Dev, Automation, Smart Buildings / BMS, Facility Tech, Cybersecurity
-- **Experience timeline** — Work history, internship and personal projects with key highlights
-- **Education** — DAM degree card with complementary learning tags
-- **Contact section** — Email, LinkedIn, GitHub and CV download in a clean grid layout
-- **Footer** — Minimal footer with external profile links
-- **Responsive navigation** — Desktop: fixed left sidebar with status indicator. Mobile: collapsible top navigation bar
-- **Smooth animations** — Framer Motion scroll-triggered entrance animations and hover micro-interactions
-- **Dark dashboard aesthetic** — Navy / slate background, electric blue accents, emerald status indicators, translucent cards
+### Secciones de contenido
+
+- **Hero** — Presentación con badge de disponibilidad, botones CTA y bloque de terminal interactivo
+- **Métricas rápidas** — Tarjetas con experiencia, proyectos, tecnologías y compromiso
+- **Proyectos destacados** — 5 tarjetas con mockups visuales, stack tecnológico y enlaces a GitHub y demo
+- **Stack técnico** — Tecnologías agrupadas por categoría: Lenguajes, Frontend, Backend y Herramientas
+- **Nivel de habilidades** — Barras de progreso animadas con autoevaluación honesta
+- **Áreas de interés** — 5 tarjetas: Desarrollo Web, Automatización, BMS, Facility Tech y Ciberseguridad
+- **Experiencia** — Timeline con trabajos, prácticas y proyectos personales con puntos clave
+- **Formación** — Título DAM con sección de certificaciones: Azure AI-900, Big Data, Java, Python, Fullstack Bootcamp y Ciberseguridad
+- **Contacto** — Grid con email, LinkedIn, GitHub y descarga de CV
+- **Footer** — Pie de página minimalista con enlaces de perfil
+
+### Efectos visuales avanzados
+
+- **Efecto typewriter en el Hero** — El subtítulo se escribe y borra solo rotando entre distintos roles profesionales. Implementado con un hook personalizado `useTypewriter` usando `useState`, `useEffect` y control de timing preciso.
+
+- **Contadores animados** — Las métricas de la sección de estadísticas cuentan desde 0 hasta su valor real cuando entran en pantalla. Implementado con el hook `useCounter` usando `IntersectionObserver` y `requestAnimationFrame` con easing cúbico.
+
+- **Glow que sigue al ratón** — Al pasar el cursor por las tarjetas de proyectos aparece un resplandor azul que sigue exactamente la posición del ratón dentro de la tarjeta. Implementado con el componente `GlowCard` usando `onMouseMove` y coordenadas relativas con `getBoundingClientRect`.
+
+- **Orbe de fondo con parallax** — Blob de color azul difuso en el Hero que se desplaza suavemente en dirección contraria al movimiento del ratón, creando efecto de profundidad. Implementado con listener global de `mousemove` y `transform` dinámico.
+
+- **Barra de progreso de scroll** — Línea azul degradada en la parte superior de la página que indica el porcentaje de contenido leído, con un punto luminoso en el extremo. Implementado con el componente `ScrollProgress` y evento `scroll` pasivo.
+
+- **Sección activa en el sidebar** — El ítem de navegación se resalta automáticamente en azul según la sección visible mientras el usuario hace scroll. Implementado con múltiples instancias de `IntersectionObserver` y `rootMargin` calibrado.
+
+- **Fondo de partículas animado** — Red de nodos y conexiones azules que se mueven lentamente por toda la página. Implementado con Canvas API y `requestAnimationFrame`.
+
+- **Animaciones de entrada** — Todas las secciones aparecen con movimiento suave al entrar en el viewport usando Framer Motion con `whileInView` y `viewport: { once: true }`.
 
 ---
 
-## Project Structure
+## Estructura del proyecto
 
 ```
 portfolio/
 ├── public/
-│   └── CV_Manuel_Honrado.pdf        ← place your CV PDF file here
+│   └── CV_Manuel_Honrado.pdf        ← coloca aquí el PDF del CV
 │
 ├── src/
-│   ├── main.tsx                     ← application entry point
-│   ├── App.tsx                      ← root component, assembles all sections in order
-│   ├── index.css                    ← Tailwind directives + Inter font import
+│   ├── main.tsx                     ← punto de entrada de la aplicación
+│   ├── App.tsx                      ← componente raíz, ensambla todas las secciones
+│   ├── index.css                    ← directivas de Tailwind + fuente Inter
 │   │
-│   ├── data/                        ← all static content lives here
-│   │   ├── profile.ts               ← name, bio, email, LinkedIn, GitHub, CV path, terminal lines
-│   │   ├── stats.ts                 ← quick metric cards (value, label, icon, color)
-│   │   ├── projects.ts              ← project cards (name, description, stack, GitHub URL, demo URL)
-│   │   ├── skills.ts                ← tech categories, skill level percentages, interest areas
-│   │   └── experience.ts            ← work experience items + education items
+│   ├── hooks/                       ← hooks personalizados de React
+│   │   ├── useTypewriter.ts         ← efecto de escritura animada letra a letra
+│   │   └── useCounter.ts            ← contador animado con IntersectionObserver
+│   │
+│   ├── data/                        ← todo el contenido estático (edita aquí para actualizar la web)
+│   │   ├── profile.ts               ← nombre, bio, email, LinkedIn, GitHub, CV, terminal
+│   │   ├── stats.ts                 ← tarjetas de métricas rápidas
+│   │   ├── projects.ts              ← tarjetas de proyectos con URLs de GitHub y demo
+│   │   ├── skills.ts                ← categorías de tecnologías, niveles y áreas de interés
+│   │   └── experience.ts            ← experiencia laboral, certificaciones y formación
 │   │
 │   └── components/
-│       ├── Layout.tsx               ← page wrapper, applies sidebar left offset on desktop
-│       ├── Sidebar.tsx              ← fixed desktop sidebar + collapsible mobile top bar
-│       ├── SectionHeader.tsx        ← reusable section title with label badge and divider line
-│       ├── BrandIcons.tsx           ← custom SVG icons for GitHub and LinkedIn (not in lucide-react)
-│       ├── Hero.tsx                 ← hero section: name, tagline, bio, buttons, terminal block
-│       ├── Stats.tsx                ← 4 animated metric cards in a responsive grid
-│       ├── Projects.tsx             ← project grid with per-type visual mockups built with divs
-│       ├── Skills.tsx               ← tech stack grouped by category
-│       ├── SkillLevels.tsx          ← skill progress bars with animated fill on scroll
-│       ├── InterestAreas.tsx        ← 5 professional interest cards with icons
-│       ├── Experience.tsx           ← timeline-style cards for work, internship and personal projects
-│       ├── Education.tsx            ← education degree card with extras list
-│       ├── Contact.tsx              ← contact grid: email, LinkedIn, GitHub, CV download
-│       └── Footer.tsx               ← footer with copyright and profile links
+│       ├── Layout.tsx               ← wrapper principal, gestiona offset del sidebar
+│       ├── Sidebar.tsx              ← sidebar fijo en escritorio + menú colapsable en móvil
+│       ├── SectionHeader.tsx        ← título de sección reutilizable con badge y línea
+│       ├── BrandIcons.tsx           ← SVGs propios de GitHub y LinkedIn
+│       ├── AnimatedBackground.tsx   ← fondo de partículas con Canvas API
+│       ├── ScrollProgress.tsx       ← barra de progreso de lectura
+│       ├── GlowCard.tsx             ← tarjeta con glow que sigue al ratón
+│       ├── Hero.tsx                 ← sección hero con typewriter y orbe parallax
+│       ├── Stats.tsx                ← métricas con contadores animados
+│       ├── Projects.tsx             ← grid de proyectos con mockups visuales
+│       ├── Skills.tsx               ← stack tecnológico agrupado por categoría
+│       ├── SkillLevels.tsx          ← barras de habilidades animadas
+│       ├── InterestAreas.tsx        ← tarjetas de áreas de interés profesional
+│       ├── Experience.tsx           ← timeline de experiencia laboral
+│       ├── Education.tsx            ← formación académica y certificaciones
+│       ├── Contact.tsx              ← grid de contacto
+│       └── Footer.tsx               ← pie de página
 │
-├── tailwind.config.js               ← Tailwind content paths and theme extensions
-├── vite.config.ts                   ← Vite build configuration
-├── tsconfig.json                    ← TypeScript root config
-├── tsconfig.app.json                ← TypeScript app config
-└── package.json                     ← scripts and dependencies
+├── tailwind.config.js               ← configuración de Tailwind
+├── vite.config.ts                   ← configuración de Vite
+├── tsconfig.json                    ← configuración TypeScript raíz
+├── tsconfig.app.json                ← configuración TypeScript de la app
+└── package.json                     ← dependencias y scripts
 ```
 
 ---
 
-## Getting Started
+## Cómo ejecutarlo en local
 
-### Prerequisites
+### Requisitos previos
 
-Make sure you have installed:
+- [Node.js](https://nodejs.org/) versión **18 o superior**
+- **npm** — se instala automáticamente con Node.js
 
-- [Node.js](https://nodejs.org/) — version **18 or higher**
-- **npm** — included automatically with Node.js
-
-Check your versions by running:
+Verifica tus versiones:
 
 ```bash
 node --version
@@ -116,65 +138,60 @@ npm --version
 
 ---
 
-### Step 1 — Navigate to the project folder
+### Paso 1 — Clona o navega al proyecto
 
-If you already have the project locally:
+Si ya tienes el proyecto en local:
 
 ```bash
 cd portfolio
 ```
 
-If you are cloning from GitHub:
+Si vas a clonarlo desde GitHub:
 
 ```bash
-git clone https://github.com/Manumost93/YOUR_PORTFOLIO_REPO.git
-cd YOUR_PORTFOLIO_REPO
+git clone https://github.com/Manumost93/portfolio.git
+cd portfolio
 ```
 
 ---
 
-### Step 2 — Install dependencies
+### Paso 2 — Instala las dependencias
 
 ```bash
 npm install
 ```
 
-This will download all required packages (React, Tailwind, Framer Motion, etc.) into `node_modules/`.  
-It only needs to be run once, or again after pulling new changes.
+Solo es necesario ejecutarlo una vez, o después de hacer pull con cambios nuevos.
 
 ---
 
-### Step 3 — Start the development server
+### Paso 3 — Arranca el servidor de desarrollo
 
 ```bash
 npm run dev
 ```
 
-Open your browser and go to:
+Abre el navegador en:
 
 ```
 http://localhost:5173
 ```
 
-The server **hot-reloads automatically** — any file you save will instantly update in the browser without refreshing.
+El servidor **recarga automáticamente** al guardar cualquier archivo.
 
 ---
 
-### Step 4 — Build for production
-
-When you are ready to deploy:
+### Paso 4 — Build de producción
 
 ```bash
 npm run build
 ```
 
-The optimized output will be generated in the `dist/` folder.
+El resultado optimizado se genera en la carpeta `dist/`.
 
 ---
 
-### Step 5 — Preview the production build
-
-To locally test the production build before deploying:
+### Paso 5 — Preview del build en local
 
 ```bash
 npm run preview
@@ -182,57 +199,57 @@ npm run preview
 
 ---
 
-## Customization Guide
+## Cómo personalizar el contenido
 
-All site content is in `src/data/` — edit these files to update the site without touching any component.
+Todo el contenido está en `src/data/`. Edita esos archivos para actualizar la web sin tocar ningún componente.
 
-| File | What to edit |
+| Archivo | Qué editar |
 |---|---|
-| `src/data/profile.ts` | Name, bio, email, LinkedIn URL, GitHub URL, CV path, terminal lines |
-| `src/data/projects.ts` | Project name, description, tech stack, GitHub link, demo link |
-| `src/data/skills.ts` | Tech categories, skill percentages, interest area cards |
-| `src/data/experience.ts` | Work experience entries, education degree, extras |
-| `src/data/stats.ts` | Metric card values and labels |
+| `src/data/profile.ts` | Nombre, bio, email, LinkedIn, GitHub, ruta del CV, líneas del terminal |
+| `src/data/projects.ts` | Nombre, descripción, stack, enlace a GitHub y URL de demo de cada proyecto |
+| `src/data/skills.ts` | Categorías de tecnologías, porcentajes de habilidades y tarjetas de interés |
+| `src/data/experience.ts` | Entradas de experiencia, certificaciones y formación |
+| `src/data/stats.ts` | Valores y etiquetas de las métricas |
 
-### Adding your CV PDF
+### Añadir el CV en PDF
 
-Drop your PDF file into the `public/` folder:
+Coloca el archivo en la carpeta `public/`:
 
 ```
 public/CV_Manuel_Honrado.pdf
 ```
 
-The "Download CV" buttons in the Hero and Contact sections will work automatically.
+Los botones de descarga del Hero y de Contacto funcionarán automáticamente.
 
-### Updating project demo URLs
+### Actualizar URLs de demo de proyectos
 
-Once a project is deployed online, open `src/data/projects.ts` and replace `demoUrl: '#'` with the real URL:
+Una vez desplegado un proyecto, abre `src/data/projects.ts` y reemplaza `demoUrl: '#'` con la URL real:
 
 ```ts
-demoUrl: 'https://your-project.vercel.app',
+demoUrl: 'https://tu-proyecto.vercel.app',
 ```
 
 ---
 
-## Deployment
+## Despliegue
 
-This is a fully static site — it can be deployed to any static hosting platform.
+Esta es una web completamente estática — se puede desplegar en cualquier plataforma de hosting estático.
 
-**Recommended options:**
+**Opciones recomendadas:**
 
-| Platform | How to deploy |
+| Plataforma | Cómo desplegar |
 |---|---|
-| [Vercel](https://vercel.com) | Connect your GitHub repo → auto-deploys on every push |
-| [Netlify](https://netlify.com) | Drag & drop the `dist/` folder, or connect your repo |
-| [GitHub Pages](https://pages.github.com) | Use the `gh-pages` npm package or a GitHub Actions workflow |
+| [Vercel](https://vercel.com) | Conecta el repo de GitHub → se despliega automáticamente en cada push |
+| [Netlify](https://netlify.com) | Arrastra la carpeta `dist/`, o conecta el repo |
+| [GitHub Pages](https://pages.github.com) | Usa el paquete `gh-pages` o un workflow de GitHub Actions |
 
 ---
 
-## License
+## Licencia
 
-This project and all its content are the intellectual property of **Manuel Honrado Vega**.  
-The code architecture may be used as a reference, but the personal content — bio, projects, experience, identity — is not for reuse.
+Este proyecto y todo su contenido son propiedad intelectual de **Manuel Honrado Vega**.
+La arquitectura del código puede usarse como referencia, pero el contenido personal — bio, proyectos, experiencia e identidad — no está disponible para reutilización.
 
 ---
 
-_Built by [Manuel Honrado Vega](https://github.com/Manumost93) · 2025_
+_Desarrollado por [Manuel Honrado Vega](https://github.com/Manumost93) · 2025_
