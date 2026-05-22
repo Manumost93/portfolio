@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown, Mail, Download, ChevronRight } from 'lucide-react';
 import { profile } from '../data/profile';
 import { useTypewriter } from '../hooks/useTypewriter';
@@ -15,6 +15,8 @@ const roles = [
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 }
+
+// ─── HeroOrb ──────────────────────────────────────────────────────────────────
 
 function HeroOrb() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
@@ -58,6 +60,155 @@ function HeroOrb() {
     </div>
   );
 }
+
+// ─── HackingTerminal ──────────────────────────────────────────────────────────
+
+type LineType = 'normal' | 'error' | 'success' | 'data' | 'progress';
+
+interface TermLine {
+  text: string;
+  type: LineType;
+}
+
+const BOOT_SEQUENCE: Array<{ delay: number; line: TermLine }> = [
+  { delay: 500,  line: { text: 'Initializing system v2.4.1...', type: 'normal' } },
+  { delay: 1100, line: { text: 'Checking auth_token...', type: 'normal' } },
+  { delay: 1750, line: { text: '[ERR] Authentication failed — 401 Unauthorized', type: 'error' } },
+  { delay: 2400, line: { text: 'Retrying connection...', type: 'progress' } },
+  { delay: 3950, line: { text: '[OK] Access granted ✓', type: 'success' } },
+  { delay: 4550, line: { text: 'Loading developer profile...', type: 'normal' } },
+  { delay: 5300, line: { text: 'name     → Manuel Honrado Vega', type: 'data' } },
+  { delay: 5900, line: { text: 'stack    → React · TS · .NET · SQL', type: 'data' } },
+  { delay: 6500, line: { text: 'role     → Junior Fullstack Developer', type: 'data' } },
+  { delay: 7100, line: { text: 'status   → available_for_opportunities ●', type: 'success' } },
+];
+
+function promptColor(type: LineType): string {
+  if (type === 'error')   return '#dc2626';
+  if (type === 'success') return '#059669';
+  return '#475569';
+}
+
+function lineColor(type: LineType): string {
+  if (type === 'error')   return '#f87171';
+  if (type === 'success') return '#34d399';
+  if (type === 'data')    return '#f1f5f9';
+  return '#94a3b8';
+}
+
+function HackingTerminal() {
+  const [lines, setLines] = useState<TermLine[]>([]);
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    BOOT_SEQUENCE.forEach(({ delay, line }, i) => {
+      timers.push(setTimeout(() => {
+        setLines(prev => [...prev, line]);
+        if (i === BOOT_SEQUENCE.length - 1) {
+          setTimeout(() => setDone(true), 800);
+        }
+      }, delay));
+    });
+
+    return () => timers.forEach(clearTimeout);
+  }, []);
+
+  return (
+    <div className="card-metal rounded-xl overflow-hidden">
+      {/* title bar */}
+      <div
+        className="flex items-center gap-1.5 px-4 py-2.5"
+        style={{ borderBottom: '1px solid rgba(100,116,139,0.18)', background: 'rgba(6,8,12,0.7)' }}
+      >
+        <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+        <span className="w-2.5 h-2.5 rounded-full bg-amber-500/60" />
+        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
+        <span className="ml-2 text-[10px] text-slate-500 font-mono tracking-wider">terminal — boot sequence</span>
+      </div>
+
+      {/* content */}
+      <div className="p-4 space-y-2 min-h-[200px]">
+        <AnimatePresence>
+          {lines.map((line, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.18, ease: 'easeOut' }}
+              className="flex items-start gap-2"
+            >
+              {/* prompt */}
+              <span
+                className="font-mono text-xs select-none mt-0.5 shrink-0"
+                style={{ color: promptColor(line.type) }}
+              >
+                {'>'}
+              </span>
+
+              {/* line content */}
+              <div className="flex-1 font-mono text-xs">
+                {line.type === 'data' ? (
+                  /* key → value coloring */
+                  (() => {
+                    const [key, val] = line.text.split('→');
+                    return (
+                      <>
+                        <span style={{ color: '#64748b' }}>{key}{'→'} </span>
+                        <span style={{ color: '#f1f5f9' }}>{val?.trim()}</span>
+                      </>
+                    );
+                  })()
+                ) : (
+                  <span style={{ color: lineColor(line.type) }}>{line.text}</span>
+                )}
+
+                {/* progress bar — only on 'progress' lines */}
+                {line.type === 'progress' && (
+                  <div
+                    className="mt-1.5 h-1.5 rounded-full overflow-hidden"
+                    style={{
+                      background: 'rgba(15,18,26,0.9)',
+                      border: '1px solid rgba(100,116,139,0.22)',
+                    }}
+                  >
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: '100%' }}
+                      transition={{ duration: 1.5, ease: 'easeOut' }}
+                      className="h-full rounded-full relative overflow-hidden"
+                      style={{
+                        background: 'linear-gradient(90deg, #334155, #64748b, #cbd5e1)',
+                        boxShadow: '0 0 8px rgba(148,163,184,0.6)',
+                      }}
+                    >
+                      <div className="absolute inset-0 shimmer" />
+                    </motion.div>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+
+        {/* blinking cursor — only while sequence is running */}
+        {!done && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex items-center gap-2"
+          >
+            <span className="font-mono text-xs text-slate-700 select-none">{'>'}</span>
+            <span className="w-1.5 h-3.5 bg-slate-500 animate-pulse rounded-sm" />
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ─── Hero ─────────────────────────────────────────────────────────────────────
 
 export default function Hero() {
   const typed = useTypewriter(roles, 70, 35, 2200);
@@ -135,7 +286,7 @@ export default function Hero() {
 
         <a
           href={profile.email}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-300 text-sm font-medium transition-all active:scale-95 card-metal hover:border-slate-500/40"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-300 text-sm font-medium transition-all active:scale-95 card-metal hover:border-slate-400/50"
         >
           <Mail size={15} />
           Contactar conmigo
@@ -152,39 +303,14 @@ export default function Hero() {
         </a>
       </motion.div>
 
-      {/* Terminal block */}
+      {/* Hacking Terminal */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
         className="max-w-xl"
       >
-        <div className="card-metal rounded-xl overflow-hidden">
-          <div className="flex items-center gap-1.5 px-4 py-2.5" style={{ borderBottom: '1px solid rgba(100,116,139,0.15)', background: 'rgba(8,10,14,0.6)' }}>
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/50" />
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/50" />
-            <span className="ml-2 text-xs text-slate-600 font-mono">terminal</span>
-          </div>
-          <div className="p-4 space-y-1.5">
-            {profile.terminalLines.map((line, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8 + i * 0.2 }}
-                className="flex items-center gap-2"
-              >
-                <span className="text-slate-500 font-mono text-xs select-none">{'>'}</span>
-                <span className="text-slate-300 font-mono text-xs">{line}</span>
-              </motion.div>
-            ))}
-            <div className="flex items-center gap-2 mt-1">
-              <span className="text-slate-500 font-mono text-xs select-none">{'>'}</span>
-              <span className="w-1.5 h-3.5 bg-slate-400 animate-pulse rounded-sm" />
-            </div>
-          </div>
-        </div>
+        <HackingTerminal />
       </motion.div>
 
       {/* Scroll hint */}
