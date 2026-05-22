@@ -56,7 +56,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="rounded-2xl border border-white/10 bg-white/4 backdrop-blur-sm p-6 md:p-8 mb-6"
+        className="card-metal rounded-2xl p-6 md:p-8 mb-6"
       >
         <div className="flex items-center gap-3 mb-6">
           <div className="p-2.5 rounded-xl border border-blue-400/20 bg-blue-400/10 text-blue-400">
@@ -78,7 +78,8 @@ export default function Contact() {
               href={href}
               {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               {...(download ? { download: true } : {})}
-              className={`flex items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/3 text-slate-400 transition-all group ${color}`}
+              className={`flex items-center gap-3 p-4 rounded-xl text-slate-400 transition-all group ${color}`}
+              style={{ background: 'rgba(12,14,20,0.6)', border: '1px solid rgba(100,116,139,0.18)' }}
             >
               <Icon size={16} className="shrink-0" />
               <div className="min-w-0">

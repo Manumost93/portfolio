@@ -20,7 +20,7 @@ export default function Experience() {
 
       <div className="relative">
         {/* Timeline line */}
-        <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/40 via-white/10 to-transparent hidden md:block" />
+        <div className="absolute left-5 top-0 bottom-0 w-px hidden md:block" style={{ background: 'linear-gradient(180deg, rgba(100,116,139,0.4) 0%, rgba(100,116,139,0.1) 60%, transparent 100%)' }} />
 
         <div className="space-y-5">
           {experience.map((item, i) => {
@@ -39,12 +39,12 @@ export default function Experience() {
                   <Icon size={16} />
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-white/4 backdrop-blur-sm p-5 hover:bg-white/6 transition">
+                <div className="card-metal rounded-2xl p-5 hover:border-slate-500/40 transition">
                   <div className="flex items-start justify-between gap-4 mb-1">
                     <div>
-                      <h3 className="text-white font-semibold text-sm">{item.title}</h3>
+                      <h3 className="text-slate-200 font-semibold text-sm">{item.title}</h3>
                       {item.company && (
-                        <p className="text-blue-400 text-xs font-medium mt-0.5">{item.company}</p>
+                        <p className="text-slate-400 text-xs font-medium mt-0.5">{item.company}</p>
                       )}
                     </div>
                     <span className="text-slate-500 text-xs font-mono whitespace-nowrap">{item.period}</span>
@@ -53,7 +53,7 @@ export default function Experience() {
                   <div className="grid sm:grid-cols-2 gap-1">
                     {item.highlights.map((h, j) => (
                       <div key={j} className="flex items-start gap-1.5 text-xs text-slate-500">
-                        <ChevronRight size={11} className="text-blue-500 mt-0.5 shrink-0" />
+                        <ChevronRight size={11} className="text-slate-500 mt-0.5 shrink-0" />
                         {h}
                       </div>
                     ))}

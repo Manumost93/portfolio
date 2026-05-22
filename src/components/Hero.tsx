@@ -36,9 +36,9 @@ function HeroOrb() {
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
       <div
-        className="absolute w-[500px] h-[500px] rounded-full opacity-10 blur-3xl"
+        className="absolute w-[500px] h-[500px] rounded-full opacity-8 blur-3xl"
         style={{
-          background: 'radial-gradient(circle, #3b82f6 0%, #1d4ed8 50%, transparent 70%)',
+          background: 'radial-gradient(circle, #475569 0%, #1e293b 50%, transparent 70%)',
           top: '5%',
           right: '-10%',
           transform: `translate(${mouse.x}px, ${mouse.y}px)`,
@@ -46,9 +46,9 @@ function HeroOrb() {
         }}
       />
       <div
-        className="absolute w-[300px] h-[300px] rounded-full opacity-6 blur-2xl"
+        className="absolute w-[300px] h-[300px] rounded-full opacity-5 blur-2xl"
         style={{
-          background: 'radial-gradient(circle, #06b6d4 0%, transparent 70%)',
+          background: 'radial-gradient(circle, #64748b 0%, transparent 70%)',
           bottom: '10%',
           left: '5%',
           transform: `translate(${-mouse.x * 0.5}px, ${-mouse.y * 0.5}px)`,
@@ -86,9 +86,9 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.1 }}
       >
         <p className="text-slate-400 text-base md:text-lg font-mono mb-2">Hola, soy</p>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-5">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-5" style={{ color: '#e2e8f0' }}>
           Manuel{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+          <span className="text-metal">
             Honrado
           </span>{' '}
           Vega
@@ -98,7 +98,7 @@ export default function Hero() {
         <div className="h-8 md:h-10 flex items-center mb-6">
           <span className="text-lg md:text-xl text-slate-300 font-mono">
             {typed}
-            <span className="inline-block w-0.5 h-5 md:h-6 bg-blue-400 ml-0.5 align-middle animate-pulse" />
+            <span className="inline-block w-0.5 h-5 md:h-6 bg-slate-400 ml-0.5 align-middle animate-pulse" />
           </span>
         </div>
       </motion.div>
@@ -122,7 +122,12 @@ export default function Hero() {
       >
         <button
           onClick={() => scrollTo('projects')}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-all hover:shadow-lg hover:shadow-blue-600/25 active:scale-95"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-200 text-sm font-medium transition-all active:scale-95"
+          style={{
+            background: 'linear-gradient(135deg, rgba(71,85,105,0.8) 0%, rgba(51,65,85,0.9) 100%)',
+            border: '1px solid rgba(148,163,184,0.25)',
+            boxShadow: '0 1px 0 rgba(203,213,225,0.08) inset, 0 4px 16px rgba(0,0,0,0.3)',
+          }}
         >
           Ver proyectos
           <ChevronRight size={15} />
@@ -130,7 +135,7 @@ export default function Hero() {
 
         <a
           href={profile.email}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-slate-200 text-sm font-medium transition-all active:scale-95"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-300 text-sm font-medium transition-all active:scale-95 card-metal hover:border-slate-500/40"
         >
           <Mail size={15} />
           Contactar conmigo
@@ -139,7 +144,8 @@ export default function Hero() {
         <a
           href={profile.cv}
           download
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 bg-transparent hover:bg-white/5 text-slate-400 text-sm font-medium transition-all active:scale-95"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-500 hover:text-slate-400 text-sm font-medium transition-all active:scale-95"
+          style={{ border: '1px solid rgba(100,116,139,0.15)' }}
         >
           <Download size={15} />
           Descargar CV
@@ -153,12 +159,12 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.4 }}
         className="max-w-xl"
       >
-        <div className="rounded-xl border border-white/10 bg-slate-950/60 backdrop-blur-sm overflow-hidden">
-          <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/8 bg-white/3">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-            <span className="ml-2 text-xs text-slate-500 font-mono">terminal</span>
+        <div className="card-metal rounded-xl overflow-hidden">
+          <div className="flex items-center gap-1.5 px-4 py-2.5" style={{ borderBottom: '1px solid rgba(100,116,139,0.15)', background: 'rgba(8,10,14,0.6)' }}>
+            <span className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/50" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/50" />
+            <span className="ml-2 text-xs text-slate-600 font-mono">terminal</span>
           </div>
           <div className="p-4 space-y-1.5">
             {profile.terminalLines.map((line, i) => (
@@ -169,13 +175,13 @@ export default function Hero() {
                 transition={{ delay: 0.8 + i * 0.2 }}
                 className="flex items-center gap-2"
               >
-                <span className="text-blue-400 font-mono text-xs select-none">{'>'}</span>
+                <span className="text-slate-500 font-mono text-xs select-none">{'>'}</span>
                 <span className="text-slate-300 font-mono text-xs">{line}</span>
               </motion.div>
             ))}
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-blue-400 font-mono text-xs select-none">{'>'}</span>
-              <span className="w-1.5 h-3.5 bg-blue-400 animate-pulse rounded-sm" />
+              <span className="text-slate-500 font-mono text-xs select-none">{'>'}</span>
+              <span className="w-1.5 h-3.5 bg-slate-400 animate-pulse rounded-sm" />
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ import { GithubIcon } from './BrandIcons';
 function ProjectMockup({ type }: { type: string }) {
   if (type === 'Fullstack App') {
     return (
-      <div className="h-28 rounded-xl bg-slate-900/80 border border-white/8 overflow-hidden p-3 flex flex-col gap-2">
+      <div className="h-28 rounded-xl bg-[#080a0e] border border-slate-700/30 overflow-hidden p-3 flex flex-col gap-2">
         <div className="flex gap-1.5 items-center mb-1">
           <div className="w-2 h-2 rounded-full bg-blue-500/60" />
           <div className="h-1.5 w-20 bg-white/10 rounded" />
@@ -27,7 +27,7 @@ function ProjectMockup({ type }: { type: string }) {
   }
   if (type === 'Facility Tech') {
     return (
-      <div className="h-28 rounded-xl bg-slate-900/80 border border-white/8 overflow-hidden p-3 flex flex-col gap-2">
+      <div className="h-28 rounded-xl bg-[#080a0e] border border-slate-700/30 overflow-hidden p-3 flex flex-col gap-2">
         <div className="flex justify-between items-center mb-1">
           <div className="h-1.5 w-24 bg-emerald-500/30 rounded" />
           <div className="h-5 w-12 bg-emerald-500/20 border border-emerald-500/30 rounded text-[9px] text-emerald-400 flex items-center justify-center font-mono">OPEN</div>
@@ -52,7 +52,7 @@ function ProjectMockup({ type }: { type: string }) {
   }
   if (type === 'Smart Buildings') {
     return (
-      <div className="h-28 rounded-xl bg-slate-900/80 border border-white/8 overflow-hidden p-3 flex flex-col gap-2">
+      <div className="h-28 rounded-xl bg-[#080a0e] border border-slate-700/30 overflow-hidden p-3 flex flex-col gap-2">
         <div className="flex items-center gap-2 mb-1">
           <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
           <div className="h-1.5 w-16 bg-white/10 rounded" />
@@ -76,14 +76,14 @@ function ProjectMockup({ type }: { type: string }) {
     );
   }
   return (
-    <div className="h-28 rounded-xl bg-slate-900/80 border border-white/8 overflow-hidden p-3 flex flex-col gap-2">
+    <div className="h-28 rounded-xl bg-[#080a0e] border border-slate-700/30 overflow-hidden p-3 flex flex-col gap-2">
       <div className="flex gap-2 mb-1">
         <div className="h-2 w-2 rounded-full bg-blue-500/50" />
         <div className="h-1.5 w-24 bg-white/10 rounded my-auto" />
       </div>
       <div className="grid grid-cols-3 gap-1.5 flex-1">
         {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="rounded bg-white/5 border border-white/8" />
+          <div key={i} className="rounded bg-white/5 border border-slate-700/30" />
         ))}
       </div>
     </div>
@@ -108,7 +108,7 @@ export default function Projects() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.07 }}
           >
-            <GlowCard className="group rounded-2xl border border-white/10 bg-white/4 backdrop-blur-sm p-5 hover:border-white/20 transition-all h-full">
+            <GlowCard className="group card-metal rounded-2xl p-5 hover:border-slate-500/40 transition-all h-full" glowColor="148,163,184">
               <div className="mb-4">
                 <ProjectMockup type={project.type} />
               </div>
@@ -125,7 +125,8 @@ export default function Projects() {
                     href={project.demoUrl}
                     target={project.demoUrl !== '#' ? '_blank' : undefined}
                     rel="noopener noreferrer"
-                    className={`p-1.5 rounded-lg border border-white/10 transition ${project.demoUrl === '#' ? 'text-slate-600 cursor-not-allowed' : 'text-slate-400 hover:text-white hover:border-white/25'}`}
+                    className={`p-1.5 rounded-lg transition ${project.demoUrl === '#' ? 'text-slate-700 cursor-not-allowed' : 'text-slate-400 hover:text-slate-200'}`}
+                    style={{ border: '1px solid rgba(100,116,139,0.2)' }}
                     aria-label="Ver demo"
                     title={project.demoUrl === '#' ? 'Demo no disponible' : 'Ver demo'}
                   >
@@ -135,7 +136,8 @@ export default function Projects() {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-1.5 rounded-lg border border-white/10 text-slate-400 hover:text-white hover:border-white/25 transition"
+                    className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 transition"
+                    style={{ border: '1px solid rgba(100,116,139,0.2)' }}
                     aria-label="Ver repositorio en GitHub"
                   >
                     <GithubIcon size={13} />
@@ -147,7 +149,7 @@ export default function Projects() {
 
               <div className="flex flex-wrap gap-1.5 mb-4">
                 {project.stack.map((tech) => (
-                  <span key={tech} className="text-[10px] font-mono bg-white/5 border border-white/8 text-slate-400 px-2 py-0.5 rounded hover:border-blue-500/30 hover:text-slate-300 transition">
+                  <span key={tech} className="text-[10px] font-mono text-slate-500 px-2 py-0.5 rounded hover:text-slate-300 transition" style={{ background: 'rgba(20,24,32,0.8)', border: '1px solid rgba(100,116,139,0.15)' }}>
                     {tech}
                   </span>
                 ))}
@@ -156,7 +158,7 @@ export default function Projects() {
               <div className="space-y-1">
                 {project.highlights.slice(0, 3).map((h, j) => (
                   <div key={j} className="flex items-start gap-1.5 text-xs text-slate-500">
-                    <ChevronRight size={11} className="text-blue-500 mt-0.5 shrink-0" />
+                    <ChevronRight size={11} className="text-slate-500 mt-0.5 shrink-0" />
                     {h}
                   </div>
                 ))}

@@ -29,9 +29,9 @@ function StatCard({ value, label, icon: Icon, color, index }: StatCardProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
     >
-      <GlowCard className="rounded-2xl border border-white/10 bg-white/4 backdrop-blur-sm p-5 hover:border-white/20 transition-all cursor-default h-full">
+      <GlowCard className="card-metal rounded-2xl p-5 hover:border-slate-500/40 transition-all cursor-default h-full" glowColor="148,163,184">
         <Icon size={20} className={`${color} mb-3`} />
-        <p className="text-2xl md:text-3xl font-bold text-white mb-1 tabular-nums">
+        <p className="text-2xl md:text-3xl font-bold mb-1 tabular-nums" style={{ color: '#cbd5e1' }}>
           {count}{suffix}
         </p>
         <p className="text-slate-500 text-xs leading-snug">{label}</p>

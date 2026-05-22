@@ -3,10 +3,11 @@ import { useRef, useState, type ReactNode, type MouseEvent } from 'react';
 interface GlowCardProps {
   children: ReactNode;
   className?: string;
+  // plata por defecto — más metálico que azul puro
   glowColor?: string;
 }
 
-export default function GlowCard({ children, className = '', glowColor = '59,130,246' }: GlowCardProps) {
+export default function GlowCard({ children, className = '', glowColor = '148,163,184' }: GlowCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
@@ -24,19 +25,15 @@ export default function GlowCard({ children, className = '', glowColor = '59,130
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={`relative overflow-hidden ${className}`}
-      style={{
-        background: hovered
-          ? `radial-gradient(280px circle at ${pos.x}px ${pos.y}px, rgba(${glowColor},0.10), transparent 70%)`
-          : undefined,
-      }}
+      style={hovered ? {
+        background: `radial-gradient(300px circle at ${pos.x}px ${pos.y}px, rgba(${glowColor},0.08), transparent 65%)`,
+      } : undefined}
     >
-      {/* Border glow on hover */}
       {hovered && (
         <div
-          className="pointer-events-none absolute inset-0 rounded-[inherit]"
+          className="pointer-events-none absolute inset-0 rounded-[inherit] z-0"
           style={{
-            background: `radial-gradient(180px circle at ${pos.x}px ${pos.y}px, rgba(${glowColor},0.18), transparent 60%)`,
-            zIndex: 0,
+            background: `radial-gradient(200px circle at ${pos.x}px ${pos.y}px, rgba(${glowColor},0.13), transparent 55%)`,
           }}
         />
       )}

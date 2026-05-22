@@ -7,6 +7,7 @@ interface Particle {
   vy: number;
   radius: number;
   opacity: number;
+  silver: boolean; // true = plata, false = azul acero
 }
 
 export default function AnimatedBackground() {
@@ -20,8 +21,8 @@ export default function AnimatedBackground() {
 
     let animId: number;
     const particles: Particle[] = [];
-    const COUNT = 55;
-    const MAX_DIST = 160;
+    const COUNT = 60;
+    const MAX_DIST = 155;
 
     function resize() {
       if (!canvas) return;
@@ -33,16 +34,16 @@ export default function AnimatedBackground() {
       return {
         x: Math.random() * (canvas?.width ?? window.innerWidth),
         y: Math.random() * (canvas?.height ?? window.innerHeight),
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        radius: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.4 + 0.15,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        radius: Math.random() * 1.4 + 0.4,
+        opacity: Math.random() * 0.35 + 0.1,
+        silver: Math.random() > 0.35, // 65% partículas plateadas, 35% azul acero
       };
     }
 
     resize();
     window.addEventListener('resize', resize);
-
     for (let i = 0; i < COUNT; i++) particles.push(spawn());
 
     function draw() {
@@ -51,24 +52,22 @@ export default function AnimatedBackground() {
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
-
-        // Move
         p.x += p.vx;
         p.y += p.vy;
 
-        // Wrap edges
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
-        // Draw node
+        // Color: plata (148,163,184) o azul acero (71,85,105)
+        const r = p.silver ? '148,163,184' : '71,85,105';
+
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(59, 130, 246, ${p.opacity})`;
+        ctx.fillStyle = `rgba(${r},${p.opacity})`;
         ctx.fill();
 
-        // Draw connections
         for (let j = i + 1; j < particles.length; j++) {
           const q = particles[j];
           const dx = p.x - q.x;
@@ -76,12 +75,13 @@ export default function AnimatedBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < MAX_DIST) {
-            const alpha = (1 - dist / MAX_DIST) * 0.12;
+            const alpha = (1 - dist / MAX_DIST) * 0.09;
+            // Líneas de conexión plateadas
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(59, 130, 246, ${alpha})`;
-            ctx.lineWidth = 0.6;
+            ctx.strokeStyle = `rgba(100,116,139,${alpha})`;
+            ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         }
@@ -91,7 +91,6 @@ export default function AnimatedBackground() {
     }
 
     draw();
-
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', resize);

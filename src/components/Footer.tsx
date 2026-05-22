@@ -4,7 +4,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="py-8 border-t border-white/8">
+    <footer className="py-8" style={{ borderTop: '1px solid rgba(100,116,139,0.15)' }}>
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />

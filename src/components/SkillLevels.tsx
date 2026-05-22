@@ -11,7 +11,7 @@ export default function SkillLevels() {
         description="Evaluación honesta de mis habilidades actuales. Junior con bases sólidas y aprendizaje constante."
       />
 
-      <div className="rounded-2xl border border-white/10 bg-white/4 backdrop-blur-sm p-6 md:p-8 space-y-6">
+      <div className="card-metal rounded-2xl p-6 md:p-8 space-y-6">
         {skillLevels.map((skill, i) => (
           <motion.div
             key={skill.name}
@@ -22,16 +22,27 @@ export default function SkillLevels() {
           >
             <div className="flex justify-between items-center mb-2">
               <span className="text-sm text-slate-300">{skill.name}</span>
-              <span className="text-xs font-mono text-slate-500">{skill.level}%</span>
+              <span className="text-xs font-mono text-slate-600">{skill.level}%</span>
             </div>
-            <div className="h-1.5 bg-white/8 rounded-full overflow-hidden">
+            {/* Track metálico */}
+            <div className="h-1.5 rounded-full overflow-hidden" style={{
+              background: 'rgba(20,24,32,0.9)',
+              boxShadow: '0 1px 0 rgba(0,0,0,0.4) inset',
+            }}>
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: `${skill.level}%` }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: i * 0.06 + 0.2, ease: 'easeOut' }}
-                className={`h-full rounded-full ${skill.color}`}
-              />
+                transition={{ duration: 0.9, delay: i * 0.06 + 0.2, ease: 'easeOut' }}
+                className="h-full rounded-full relative overflow-hidden"
+                style={{
+                  background: 'linear-gradient(90deg, #334155 0%, #64748b 40%, #94a3b8 70%, #cbd5e1 100%)',
+                  boxShadow: '0 0 6px rgba(148,163,184,0.3)',
+                }}
+              >
+                {/* Shimmer sweep */}
+                <div className="absolute inset-0 shimmer" />
+              </motion.div>
             </div>
           </motion.div>
         ))}
