@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, ChevronRight } from 'lucide-react';
-import { GithubIcon } from './BrandIcons';
 import { projects } from '../data/projects';
 import SectionHeader from './SectionHeader';
+import GlowCard from './GlowCard';
+import { GithubIcon } from './BrandIcons';
 
 function ProjectMockup({ type }: { type: string }) {
   if (type === 'Fullstack App') {
@@ -100,73 +101,68 @@ export default function Projects() {
 
       <div className="grid md:grid-cols-2 gap-5">
         {projects.map((project, i) => (
-          <motion.article
+          <motion.div
             key={project.id}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.07 }}
-            whileHover={{ y: -3 }}
-            className="group rounded-2xl border border-white/10 bg-white/4 backdrop-blur-sm p-5 hover:bg-white/7 hover:border-white/18 transition-all"
           >
-            {/* Type badge + mockup */}
-            <div className="mb-4">
-              <ProjectMockup type={project.type} />
-            </div>
-
-            <div className="flex items-start justify-between gap-3 mb-3">
-              <div>
-                <h3 className="text-white font-semibold text-base leading-tight">{project.name}</h3>
-                <span className={`inline-block mt-1 text-[10px] font-mono border px-2 py-0.5 rounded-full ${project.typeColor}`}>
-                  {project.type}
-                </span>
+            <GlowCard className="group rounded-2xl border border-white/10 bg-white/4 backdrop-blur-sm p-5 hover:border-white/20 transition-all h-full">
+              <div className="mb-4">
+                <ProjectMockup type={project.type} />
               </div>
-              <div className="flex gap-1.5 shrink-0">
-                {/* TODO: reemplaza href="#" con el enlace real de demo */}
-                <a
-                  href={project.demoUrl}
-                  className="p-1.5 rounded-lg border border-white/10 text-slate-400 hover:text-white hover:border-white/25 transition"
-                  aria-label="Ver demo"
-                  title="Ver demo"
-                >
-                  <ExternalLink size={13} />
-                </a>
-                {/* TODO: reemplaza href="#" con el enlace real de GitHub */}
-                <a
-                  href={project.githubUrl}
-                  className="p-1.5 rounded-lg border border-white/10 text-slate-400 hover:text-white hover:border-white/25 transition"
-                  aria-label="Ver repositorio en GitHub"
-                  title="GitHub"
-                >
-                  <GithubIcon size={13} />
-                </a>
-              </div>
-            </div>
 
-            <p className="text-slate-400 text-xs leading-relaxed mb-4">{project.description}</p>
-
-            {/* Stack pills */}
-            <div className="flex flex-wrap gap-1.5 mb-4">
-              {project.stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="text-[10px] font-mono bg-white/5 border border-white/8 text-slate-400 px-2 py-0.5 rounded"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            {/* Highlights */}
-            <div className="space-y-1">
-              {project.highlights.slice(0, 3).map((h, j) => (
-                <div key={j} className="flex items-start gap-1.5 text-xs text-slate-500">
-                  <ChevronRight size={11} className="text-blue-500 mt-0.5 shrink-0" />
-                  {h}
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div>
+                  <h3 className="text-white font-semibold text-base leading-tight">{project.name}</h3>
+                  <span className={`inline-block mt-1 text-[10px] font-mono border px-2 py-0.5 rounded-full ${project.typeColor}`}>
+                    {project.type}
+                  </span>
                 </div>
-              ))}
-            </div>
-          </motion.article>
+                <div className="flex gap-1.5 shrink-0">
+                  <a
+                    href={project.demoUrl}
+                    target={project.demoUrl !== '#' ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                    className={`p-1.5 rounded-lg border border-white/10 transition ${project.demoUrl === '#' ? 'text-slate-600 cursor-not-allowed' : 'text-slate-400 hover:text-white hover:border-white/25'}`}
+                    aria-label="Ver demo"
+                    title={project.demoUrl === '#' ? 'Demo no disponible' : 'Ver demo'}
+                  >
+                    <ExternalLink size={13} />
+                  </a>
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 rounded-lg border border-white/10 text-slate-400 hover:text-white hover:border-white/25 transition"
+                    aria-label="Ver repositorio en GitHub"
+                  >
+                    <GithubIcon size={13} />
+                  </a>
+                </div>
+              </div>
+
+              <p className="text-slate-400 text-xs leading-relaxed mb-4">{project.description}</p>
+
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {project.stack.map((tech) => (
+                  <span key={tech} className="text-[10px] font-mono bg-white/5 border border-white/8 text-slate-400 px-2 py-0.5 rounded hover:border-blue-500/30 hover:text-slate-300 transition">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="space-y-1">
+                {project.highlights.slice(0, 3).map((h, j) => (
+                  <div key={j} className="flex items-start gap-1.5 text-xs text-slate-500">
+                    <ChevronRight size={11} className="text-blue-500 mt-0.5 shrink-0" />
+                    {h}
+                  </div>
+                ))}
+              </div>
+            </GlowCard>
+          </motion.div>
         ))}
       </div>
     </section>
