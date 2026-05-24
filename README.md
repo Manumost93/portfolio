@@ -42,13 +42,13 @@ El diseño visual está inspirado en dashboards industriales e interfaces SaaS o
 
 - **Hero** — Presentación con badge de disponibilidad, botones CTA y bloque de terminal interactivo
 - **Métricas rápidas** — Tarjetas con experiencia, proyectos, tecnologías y compromiso
-- **Proyectos destacados** — 5 tarjetas con mockups visuales, stack tecnológico y enlaces a GitHub y demo
+- **Proyectos destacados** — 6 tarjetas con mockups visuales, stack tecnológico y enlaces a GitHub y demo
 - **Stack técnico** — Tecnologías agrupadas por categoría: Lenguajes, Frontend, Backend y Herramientas
 - **Nivel de habilidades** — Barras de progreso animadas con autoevaluación honesta
 - **Áreas de interés** — 5 tarjetas: Desarrollo Web, Automatización, BMS, Facility Tech y Ciberseguridad
 - **Experiencia** — Timeline con trabajos, prácticas y proyectos personales con puntos clave
 - **Formación** — Título DAM con sección de certificaciones: Azure AI-900, Big Data, Java, Python, Fullstack Bootcamp y Ciberseguridad
-- **Contacto** — Grid con email, LinkedIn, GitHub y descarga de CV
+- **Contacto** — Grid con email, LinkedIn, GitHub y descarga de CV (activable/desactivable con `cvEnabled` en `profile.ts`)
 - **Footer** — Pie de página minimalista con enlaces de perfil
 
 ### Efectos visuales avanzados
@@ -205,7 +205,7 @@ Todo el contenido está en `src/data/`. Edita esos archivos para actualizar la w
 
 | Archivo | Qué editar |
 |---|---|
-| `src/data/profile.ts` | Nombre, bio, email, LinkedIn, GitHub, ruta del CV, líneas del terminal |
+| `src/data/profile.ts` | Nombre, bio, email, LinkedIn, GitHub, ruta del CV, `cvEnabled`, líneas del terminal |
 | `src/data/projects.ts` | Nombre, descripción, stack, enlace a GitHub y URL de demo de cada proyecto |
 | `src/data/skills.ts` | Categorías de tecnologías, porcentajes de habilidades y tarjetas de interés |
 | `src/data/experience.ts` | Entradas de experiencia, certificaciones y formación |
@@ -219,7 +219,13 @@ Coloca el archivo en la carpeta `public/`:
 public/CV_Manuel_Honrado.pdf
 ```
 
-Los botones de descarga del Hero y de Contacto funcionarán automáticamente.
+Activa el botón de descarga cambiando el flag en `src/data/profile.ts`:
+
+```ts
+cvEnabled: true,   // true = botón activo | false = botón desactivado visualmente
+```
+
+Cuando `cvEnabled` es `false`, los botones del Hero y de Contacto se muestran bloqueados (sin enlace ni descarga) hasta que se reactive.
 
 ### Actualizar URLs de demo de proyectos
 
