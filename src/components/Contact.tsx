@@ -72,22 +72,41 @@ export default function Contact() {
         </div>
 
         <div className="grid sm:grid-cols-2 gap-3">
-          {links.map(({ label, href, icon: Icon, color, description, external, download }) => (
-            <a
-              key={label}
-              href={href}
-              {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              {...(download ? { download: true } : {})}
-              className={`flex items-center gap-3 p-4 rounded-xl text-slate-400 transition-all group ${color}`}
-              style={{ background: 'rgba(12,14,20,0.6)', border: '1px solid rgba(100,116,139,0.18)' }}
-            >
-              <Icon size={16} className="shrink-0" />
-              <div className="min-w-0">
-                <p className="text-sm font-medium text-slate-200 group-hover:text-current transition">{label}</p>
-                <p className="text-xs text-slate-500">{description}</p>
-              </div>
-            </a>
-          ))}
+          {links.map(({ label, href, icon: Icon, color, description, external, download }) => {
+            const isDisabled = download && !profile.cvEnabled;
+            if (isDisabled) {
+              return (
+                <span
+                  key={label}
+                  className="flex items-center gap-3 p-4 rounded-xl text-slate-700 cursor-not-allowed select-none"
+                  style={{ background: 'rgba(12,14,20,0.4)', border: '1px solid rgba(100,116,139,0.08)' }}
+                  title="CV no disponible temporalmente"
+                >
+                  <Icon size={16} className="shrink-0" />
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium text-slate-700">{label}</p>
+                    <p className="text-xs text-slate-800">{description}</p>
+                  </div>
+                </span>
+              );
+            }
+            return (
+              <a
+                key={label}
+                href={href}
+                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                {...(download ? { download: true } : {})}
+                className={`flex items-center gap-3 p-4 rounded-xl text-slate-400 transition-all group ${color}`}
+                style={{ background: 'rgba(12,14,20,0.6)', border: '1px solid rgba(100,116,139,0.18)' }}
+              >
+                <Icon size={16} className="shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-slate-200 group-hover:text-current transition">{label}</p>
+                  <p className="text-xs text-slate-500">{description}</p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </motion.div>
     </section>

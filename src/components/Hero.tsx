@@ -292,15 +292,26 @@ export default function Hero() {
           Contactar conmigo
         </a>
 
-        <a
-          href={profile.cv}
-          download
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-500 hover:text-slate-400 text-sm font-medium transition-all active:scale-95"
-          style={{ border: '1px solid rgba(100,116,139,0.15)' }}
-        >
-          <Download size={15} />
-          Descargar CV
-        </a>
+        {profile.cvEnabled ? (
+          <a
+            href={profile.cv}
+            download
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-500 hover:text-slate-400 text-sm font-medium transition-all active:scale-95"
+            style={{ border: '1px solid rgba(100,116,139,0.15)' }}
+          >
+            <Download size={15} />
+            Descargar CV
+          </a>
+        ) : (
+          <span
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-700 text-sm font-medium cursor-not-allowed select-none"
+            style={{ border: '1px solid rgba(100,116,139,0.08)' }}
+            title="CV no disponible temporalmente"
+          >
+            <Download size={15} />
+            Descargar CV
+          </span>
+        )}
       </motion.div>
 
       {/* Hacking Terminal */}
