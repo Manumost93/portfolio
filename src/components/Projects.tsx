@@ -120,6 +120,31 @@ function ProjectMockup({ type }: { type: string }) {
       </div>
     );
   }
+  if (type === 'Salud & Reservas') {
+    return (
+      <div className="h-28 rounded-xl bg-[#080a0e] border border-slate-700/30 overflow-hidden p-3 flex flex-col gap-2">
+        <div className="flex items-center justify-between mb-1">
+          <div className="flex items-center gap-1.5">
+            <div className="w-2 h-2 rounded-full bg-rose-400/70" />
+            <div className="h-1.5 w-20 bg-white/10 rounded" />
+          </div>
+          <div className="h-4 w-14 bg-rose-500/20 border border-rose-500/30 rounded text-[8px] text-rose-400 flex items-center justify-center font-mono">RESERVAR</div>
+        </div>
+        <div className="grid grid-cols-4 gap-1">
+          {['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom', '—'].map((d, i) => (
+            <div key={i} className={`h-5 rounded text-[7px] font-mono flex items-center justify-center ${i < 5 ? 'bg-rose-500/20 border border-rose-500/20 text-rose-300' : 'bg-white/4 border border-slate-700/20 text-slate-600'}`}>
+              {d}
+            </div>
+          ))}
+        </div>
+        <div className="flex gap-1.5 mt-auto">
+          <div className="flex-1 h-2 bg-emerald-500/30 rounded border border-emerald-500/20" />
+          <div className="flex-1 h-2 bg-rose-500/30 rounded border border-rose-500/20" />
+          <div className="w-8 h-2 bg-white/8 rounded border border-slate-700/20" />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="h-28 rounded-xl bg-[#080a0e] border border-slate-700/30 overflow-hidden p-3 flex flex-col gap-2">
       <div className="flex gap-2 mb-1">

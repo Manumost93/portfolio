@@ -11,8 +11,8 @@ export const profile = {
   email: 'mailto:myjhonradov@gmail.com',
   linkedin: 'https://www.linkedin.com/in/manuel-honrado-desarrollador',
   github: 'https://github.com/Manumost93',
-  // CV: añade el archivo PDF en /public/CV_Manuel_Honrado.pdf cuando lo tengas listo
   cv: '/CV_Manuel_Honrado.pdf',
+  cvEnabled: false,
 
   terminalLines: [
     'status: available_for_opportunities',

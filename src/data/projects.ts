@@ -101,4 +101,22 @@ export const projects: Project[] = [
     demoUrl: '#',
     githubUrl: 'https://github.com/Manumost93/react-pruebas',
   },
+  {
+    id: 6,
+    name: 'Negocio Fisioterapia',
+    type: 'Salud & Reservas',
+    typeColor: 'text-rose-400 bg-rose-400/10 border-rose-400/20',
+    description:
+      'Web profesional de reservas de fisioterapia a domicilio. Gestión de citas, panel de administración y experiencia de usuario orientada a la conversión.',
+    stack: ['React', 'TypeScript', 'Panel Admin', 'Reservas', 'Responsive', 'Vercel'],
+    highlights: [
+      'Sistema de reservas a domicilio',
+      'Panel de administración integrado',
+      'React + TypeScript',
+      'Diseño orientado a conversión',
+      'Despliegue en Vercel',
+    ],
+    demoUrl: 'https://negociofisioterapia.vercel.app',
+    githubUrl: 'https://github.com/Manumost93/negociofisioterapia',
+  },
 ];
