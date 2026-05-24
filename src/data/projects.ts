@@ -116,7 +116,7 @@ export const projects: Project[] = [
       'Diseño orientado a conversión',
       'Despliegue en Vercel',
     ],
-    demoUrl: '#',
+    demoUrl: 'https://negociofisioterapia.vercel.app',
     githubUrl: 'https://github.com/Manumost93/negociofisioterapia',
   },
 ];
