@@ -4,6 +4,42 @@ import { ArrowDown, Mail, Download, ChevronRight } from 'lucide-react';
 import { profile } from '../data/profile';
 import { useTypewriter } from '../hooks/useTypewriter';
 
+const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>/\\|';
+
+function useScramble(target: string, delay = 500) {
+  const randomize = (t: string) =>
+    t.split('').map(c => c === ' ' ? ' ' : SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]).join('');
+  const [display, setDisplay] = useState(() => randomize(target));
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    let frame = 0;
+    const TOTAL = 28;
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        frame++;
+        const revealed = Math.floor((frame / TOTAL) * target.length);
+        setDisplay(
+          target.split('').map((char, i) => {
+            if (char === ' ') return ' ';
+            if (i < revealed) return char;
+            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+          }).join('')
+        );
+        if (frame >= TOTAL) {
+          clearInterval(interval);
+          setDisplay(target);
+          setDone(true);
+        }
+      }, 45);
+      return () => clearInterval(interval);
+    }, delay);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return { display, done };
+}
+
 const roles = [
   'React + TypeScript Developer',
   'Junior Fullstack Developer',
@@ -212,6 +248,7 @@ function HackingTerminal() {
 
 export default function Hero() {
   const typed = useTypewriter(roles, 70, 35, 2200);
+  const { display: scrambledName, done: scrambleDone } = useScramble('Manuel Honrado Vega', 500);
 
   return (
     <section id="hero" className="relative min-h-[85vh] flex flex-col justify-center py-12">
@@ -222,12 +259,23 @@ export default function Hero() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex items-center gap-2 mb-8"
+        className="flex items-center gap-3 mb-8 flex-wrap"
       >
-        <span className="flex items-center gap-2 text-xs font-mono border border-emerald-500/30 bg-emerald-500/8 text-emerald-400 px-3 py-1.5 rounded-full">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          {profile.availabilityLabel}
+        <span
+          className="flex items-center gap-2.5 text-sm font-bold tracking-wide text-emerald-300 px-5 py-2.5 rounded-full"
+          style={{
+            border: '1px solid rgba(52,211,153,0.45)',
+            background: 'rgba(52,211,153,0.08)',
+            boxShadow: '0 0 24px rgba(52,211,153,0.15), 0 0 0 1px rgba(52,211,153,0.06)',
+          }}
+        >
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50" />
+            <span className="relative w-2.5 h-2.5 rounded-full bg-emerald-400" />
+          </span>
+          OPEN TO WORK
         </span>
+        <span className="text-xs text-slate-500 font-mono hidden sm:block">{profile.availabilityLabel}</span>
       </motion.div>
 
       {/* Main heading */}
@@ -238,11 +286,19 @@ export default function Hero() {
       >
         <p className="text-slate-400 text-base md:text-lg font-mono mb-2">Hola, soy</p>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-5" style={{ color: '#e2e8f0' }}>
-          Manuel{' '}
-          <span className="text-metal" style={{ filter: 'drop-shadow(0 0 18px rgba(203,213,225,0.5))' }}>
-            Honrado
-          </span>{' '}
-          Vega
+          {scrambleDone ? (
+            <>
+              Manuel{' '}
+              <span className="text-metal" style={{ filter: 'drop-shadow(0 0 18px rgba(203,213,225,0.5))' }}>
+                Honrado
+              </span>{' '}
+              Vega
+            </>
+          ) : (
+            <span className="font-mono tracking-tight text-slate-300" style={{ letterSpacing: '-0.02em' }}>
+              {scrambledName}
+            </span>
+          )}
         </h1>
 
         {/* Typewriter */}
