@@ -145,6 +145,32 @@ function ProjectMockup({ type }: { type: string }) {
       </div>
     );
   }
+  if (type === 'App Portable') {
+    return (
+      <div className="h-28 rounded-xl bg-[#080a0e] border border-slate-700/30 overflow-hidden p-3 flex flex-col gap-2">
+        <div className="flex items-center gap-2 mb-1">
+          <div className="flex gap-1">
+            <div className="w-2 h-2 rounded-sm bg-orange-500/60" />
+            <div className="w-2 h-2 rounded-sm bg-orange-400/40" />
+          </div>
+          <div className="h-1.5 w-16 bg-white/10 rounded" />
+          <div className="ml-auto h-4 w-10 bg-orange-500/20 border border-orange-500/30 rounded text-[8px] text-orange-400 flex items-center justify-center font-mono">APP</div>
+        </div>
+        <div className="flex gap-2 flex-1">
+          <div className="w-14 bg-white/4 rounded border border-slate-700/20 p-1.5 space-y-1">
+            {['bg-orange-500/40', 'bg-white/15', 'bg-white/10', 'bg-white/8'].map((c, i) => (
+              <div key={i} className={`h-1.5 w-full rounded ${c}`} />
+            ))}
+          </div>
+          <div className="flex-1 bg-white/4 rounded border border-slate-700/20 p-1.5 space-y-1">
+            {[80, 60, 90, 50].map((w, i) => (
+              <div key={i} className="h-1.5 bg-white/12 rounded" style={{ width: `${w}%` }} />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="h-28 rounded-xl bg-[#080a0e] border border-slate-700/30 overflow-hidden p-3 flex flex-col gap-2">
       <div className="flex gap-2 mb-1">
@@ -187,9 +213,23 @@ export default function Projects() {
               <div className="flex items-start justify-between gap-3 mb-3">
                 <div>
                   <h3 className="text-white font-semibold text-base leading-tight">{project.name}</h3>
-                  <span className={`inline-block mt-1 text-[10px] font-mono border px-2 py-0.5 rounded-full ${project.typeColor}`}>
-                    {project.type}
-                  </span>
+                  <div className="flex items-center gap-1.5 flex-wrap mt-1">
+                    <span className={`inline-block text-[10px] font-mono border px-2 py-0.5 rounded-full ${project.typeColor}`}>
+                      {project.type}
+                    </span>
+                    {project.status === 'completado' && (
+                      <span className="inline-flex items-center gap-1 text-[10px] font-mono border px-2 py-0.5 rounded-full text-emerald-400 bg-emerald-400/10 border-emerald-400/20">
+                        <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                        Completado
+                      </span>
+                    )}
+                    {project.status === 'en-desarrollo' && (
+                      <span className="inline-flex items-center gap-1 text-[10px] font-mono border px-2 py-0.5 rounded-full text-amber-400 bg-amber-400/10 border-amber-400/20">
+                        <span className="w-1 h-1 rounded-full bg-amber-400 animate-pulse" />
+                        En desarrollo
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="flex gap-1.5 shrink-0">
                   <a

@@ -8,6 +8,7 @@ export interface Project {
   highlights: string[];
   demoUrl: string;
   githubUrl: string;
+  status?: 'completado' | 'en-desarrollo';
 }
 
 export const projects: Project[] = [
@@ -28,6 +29,7 @@ export const projects: Project[] = [
     ],
     demoUrl: 'https://pfc-histolinea.vercel.app',
     githubUrl: 'https://github.com/Manumost93/pfc-histolinea',
+    status: 'completado',
   },
   {
     id: 2,
@@ -46,6 +48,7 @@ export const projects: Project[] = [
     ],
     demoUrl: 'https://inventory-orders-dashboard-git-main-manumost93s-projects.vercel.app',
     githubUrl: 'https://github.com/Manumost93/inventory-orders-dashboard',
+    status: 'completado',
   },
   {
     id: 3,
@@ -64,6 +67,7 @@ export const projects: Project[] = [
     ],
     demoUrl: '#',
     githubUrl: 'https://github.com/Manumost93/Manumost93',
+    status: 'en-desarrollo',
   },
   {
     id: 4,
@@ -71,35 +75,37 @@ export const projects: Project[] = [
     type: 'Personal Brand',
     typeColor: 'text-purple-400 bg-purple-400/10 border-purple-400/20',
     description:
-      'Web personal desarrollada con React, TypeScript, Vite y Tailwind CSS para mostrar proyectos, experiencia técnica, stack tecnológico y perfil profesional.',
-    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+      'Web personal con diseño tipo dashboard técnico oscuro. Efectos visuales avanzados: cursor magnético, lluvia Matrix, partículas Canvas y animaciones con Framer Motion.',
+    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Canvas API'],
     highlights: [
-      'Diseño tipo dashboard técnico',
-      'Componentes reutilizables',
-      'Responsive design completo',
+      'Cursor magnético y lluvia Matrix',
+      'Fondo de partículas con Canvas API',
       'Animaciones con Framer Motion',
-      'Posicionamiento profesional claro',
+      'Responsive design completo',
+      'Desplegado en Vercel',
     ],
-    demoUrl: '#',
-    githubUrl: 'https://github.com/Manumost93/ecommerce-react',
+    demoUrl: 'https://portfolio-kohl-seven-15tnfk4ujq.vercel.app',
+    githubUrl: 'https://github.com/Manumost93/portfolio',
+    status: 'completado',
   },
   {
     id: 5,
-    name: 'Generador de Informes Técnicos',
-    type: 'Utilidad técnica',
-    typeColor: 'text-slate-400 bg-slate-400/10 border-slate-400/20',
+    name: 'AppMantenimiento Portable',
+    type: 'App Portable',
+    typeColor: 'text-orange-400 bg-orange-400/10 border-orange-400/20',
     description:
-      'Herramienta conceptual para generar informes de mantenimiento, registrar actuaciones, exportar datos y estructurar información técnica de forma clara.',
-    stack: ['React', 'TypeScript', 'Formularios', 'Validaciones', 'Exportación PDF/Excel'],
+      'Aplicación portable para la gestión integral de mantenimiento: registro de incidencias, seguimiento de tareas, control de activos y generación de informes en entornos técnicos reales.',
+    stack: ['React', 'TypeScript', 'LocalStorage', 'CRUD', 'Exportación', 'Vercel'],
     highlights: [
-      'Registro de actuaciones técnicas',
-      'Generación de informes estructurados',
-      'Validación de formularios',
-      'Transformación de tareas manuales en digital',
-      'Orientado a equipos de mantenimiento',
+      'Gestión de incidencias y activos',
+      'Datos persistentes sin servidor',
+      'Exportación de informes',
+      'Diseño portable y ligero',
+      'Orientado a técnicos de campo',
     ],
-    demoUrl: '#',
-    githubUrl: 'https://github.com/Manumost93/react-pruebas',
+    demoUrl: 'https://app-mantenimiento-sigma.vercel.app',
+    githubUrl: 'https://github.com/Manumost93/AppMantenimiento',
+    status: 'completado',
   },
   {
     id: 6,
@@ -118,5 +124,6 @@ export const projects: Project[] = [
     ],
     demoUrl: 'https://negociofisioterapia.vercel.app',
     githubUrl: 'https://github.com/Manumost93/negociofisioterapia',
+    status: 'completado',
   },
 ];
