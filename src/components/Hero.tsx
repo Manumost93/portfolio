@@ -254,6 +254,30 @@ export default function Hero() {
     <section id="hero" className="relative min-h-[85vh] flex flex-col justify-center py-12">
       <HeroOrb />
 
+      <div className="flex flex-col lg:flex-row lg:items-center lg:gap-16">
+      {/* ── Left: all content ── */}
+      <div className="flex-1 min-w-0">
+
+      {/* Mobile avatar */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="flex justify-center mb-8 lg:hidden"
+      >
+        <div className="relative">
+          <div className="absolute inset-0 rounded-full animate-pulse"
+            style={{ background: 'radial-gradient(circle, rgba(148,163,184,0.2) 0%, transparent 70%)', transform: 'scale(1.15)' }} />
+          <img
+            src="/ImagenLikdn.png"
+            alt="Manuel Honrado Vega"
+            className="w-28 h-28 rounded-full object-cover object-top relative z-10"
+            style={{ border: '2px solid rgba(148,163,184,0.3)', boxShadow: '0 0 24px rgba(148,163,184,0.15)' }}
+          />
+          <span className="absolute bottom-1 right-1 z-20 w-4 h-4 rounded-full bg-emerald-400 border-2 border-[#080a0d]" />
+        </div>
+      </motion.div>
+
       {/* Availability badge */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -387,11 +411,55 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="mt-16 flex items-center gap-2 text-slate-600 text-xs"
+        className="mt-12 flex items-center gap-2 text-slate-600 text-xs"
       >
         <ArrowDown size={13} className="animate-bounce" />
         <span>Desplázate para explorar</span>
       </motion.div>
+
+      </div>{/* end left column */}
+
+      {/* ── Right: desktop avatar ── */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="hidden lg:flex flex-col items-center shrink-0"
+      >
+        <div className="relative">
+          {/* Outer glow ring */}
+          <div className="absolute inset-0 rounded-full"
+            style={{
+              background: 'radial-gradient(circle, rgba(148,163,184,0.18) 0%, transparent 70%)',
+              transform: 'scale(1.18)',
+            }}
+          />
+          {/* Spinning dashed ring */}
+          <svg className="absolute inset-0 w-full h-full animate-spin" style={{ animationDuration: '18s' }} viewBox="0 0 220 220">
+            <circle cx="110" cy="110" r="106" fill="none" stroke="rgba(148,163,184,0.18)" strokeWidth="1" strokeDasharray="6 10" />
+          </svg>
+          {/* Photo */}
+          <img
+            src="/ImagenLikdn.png"
+            alt="Manuel Honrado Vega"
+            className="w-52 h-52 rounded-full object-cover object-top relative z-10"
+            style={{
+              border: '2px solid rgba(148,163,184,0.25)',
+              boxShadow: '0 0 40px rgba(148,163,184,0.12), 0 0 0 6px rgba(148,163,184,0.05)',
+            }}
+          />
+          {/* Online dot */}
+          <span className="absolute bottom-3 right-3 z-20 flex items-center justify-center w-6 h-6 rounded-full bg-[#080a0d]"
+            style={{ border: '2px solid rgba(52,211,153,0.5)' }}>
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+          </span>
+        </div>
+        {/* Name below photo */}
+        <p className="mt-4 text-xs font-mono text-slate-500 tracking-widest uppercase">Manuel Honrado</p>
+        <p className="text-[10px] font-mono text-slate-700 tracking-wider">Junior Fullstack Dev</p>
+      </motion.div>
+
+      </div>{/* end flex row */}
     </section>
   );
 }
