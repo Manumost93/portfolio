@@ -95,7 +95,7 @@ export const projects: Project[] = [
     typeColor: 'text-orange-400 bg-orange-400/10 border-orange-400/20',
     description:
       'Aplicación portable para la gestión integral de mantenimiento: registro de incidencias, seguimiento de tareas, control de activos y generación de informes en entornos técnicos reales.',
-    stack: ['React', 'TypeScript', 'LocalStorage', 'CRUD', 'Exportación', 'Vercel'],
+    stack: ['React', 'TypeScript', 'Electron', 'LocalStorage', 'CRUD', 'Exportación'],
     highlights: [
       'Gestión de incidencias y activos',
       'Datos persistentes sin servidor',
