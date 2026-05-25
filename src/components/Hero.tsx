@@ -295,9 +295,11 @@ export default function Hero() {
               Vega
             </>
           ) : (
-            <span className="font-mono tracking-tight text-slate-300" style={{ letterSpacing: '-0.02em' }}>
-              {scrambledName}
-            </span>
+            <>
+              {scrambledName.split(' ').map((word, i) => (
+                <span key={i} className="font-mono text-slate-300 inline-block mr-[0.25em]">{word}</span>
+              ))}
+            </>
           )}
         </h1>
 
@@ -315,7 +317,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-slate-400 text-sm md:text-base max-w-2xl leading-relaxed mb-10"
+        className="text-slate-400 text-sm md:text-base max-w-2xl leading-relaxed mb-6 md:mb-10"
       >
         {profile.bio}
       </motion.p>
@@ -325,7 +327,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="flex flex-wrap gap-3 mb-14"
+        className="flex flex-wrap gap-3 mb-8 md:mb-14"
       >
         <button
           onClick={() => scrollTo('projects')}
