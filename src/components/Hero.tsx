@@ -260,9 +260,9 @@ export default function Hero() {
 
       {/* Mobile avatar */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
         className="flex justify-center mb-8 lg:hidden"
       >
         <div className="relative">
@@ -421,9 +421,9 @@ export default function Hero() {
 
       {/* ── Right: desktop avatar ── */}
       <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.7, delay: 0.3 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.9, delay: 0.4 }}
         className="hidden lg:flex flex-col items-center shrink-0"
       >
         <div className="relative">
