@@ -120,6 +120,43 @@ function ProjectMockup({ type }: { type: string }) {
       </div>
     );
   }
+  if (type === 'Cybersecurity / Fullstack') {
+    return (
+      <div className="h-28 rounded-xl bg-[#080a0e] border border-cyan-500/20 overflow-hidden p-3 flex flex-col gap-1.5 font-mono">
+        <div className="flex items-center justify-between mb-0.5">
+          <div className="flex items-center gap-1.5">
+            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="text-[8px] text-cyan-400">SOC · LIVE</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <div className="h-3 px-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded text-[7px] text-emerald-400 flex items-center">JWT</div>
+            <div className="h-3 px-1.5 bg-cyan-500/20 border border-cyan-500/30 rounded text-[7px] text-cyan-400 flex items-center">ADMIN</div>
+          </div>
+        </div>
+        <div className="space-y-1">
+          {[
+            { color: 'bg-red-500/70', label: 'ALERT', msg: 'Brute force detected · /api/auth', w: '90%' },
+            { color: 'bg-amber-500/70', label: 'WARN', msg: 'Rate limit triggered · 429', w: '65%' },
+            { color: 'bg-cyan-500/60', label: 'INFO', msg: 'Header audit · score 78/100', w: '78%' },
+          ].map((row, i) => (
+            <div key={i} className="flex items-center gap-1.5">
+              <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${row.color}`} />
+              <span className="text-[7px] text-slate-500 w-6 shrink-0">{row.label}</span>
+              <div className="flex-1 h-1 bg-white/6 rounded overflow-hidden">
+                <div className={`h-full ${row.color} rounded`} style={{ width: row.w }} />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex gap-1.5 mt-auto pt-0.5 border-t border-slate-700/30">
+          {['bcrypt', 'Helmet', 'OWASP'].map((tag, i) => (
+            <span key={i} className="text-[7px] text-slate-600 px-1 py-0.5 bg-white/4 border border-slate-700/20 rounded">{tag}</span>
+          ))}
+          <span className="ml-auto text-[7px] text-cyan-500/60">render + vercel</span>
+        </div>
+      </div>
+    );
+  }
   if (type === 'Salud & Reservas') {
     return (
       <div className="h-28 rounded-xl bg-[#080a0e] border border-slate-700/30 overflow-hidden p-3 flex flex-col gap-2">
@@ -205,7 +242,7 @@ export default function Projects() {
             transition={{ duration: 0.5, delay: i * 0.07 }}
           >
             <TiltCard>
-            <GlowCard className="group card-metal rounded-2xl p-5 transition-all h-full" glowColor="148,163,184">
+            <GlowCard className="group card-metal rounded-2xl p-5 transition-all h-full" glowColor={project.glowRgb ?? '148,163,184'}>
               <div className="mb-4">
                 <ProjectMockup type={project.type} />
               </div>

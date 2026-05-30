@@ -9,6 +9,7 @@ export interface Project {
   demoUrl: string;
   githubUrl: string;
   status?: 'completado' | 'en-desarrollo';
+  glowRgb?: string;
 }
 
 export const projects: Project[] = [
@@ -30,6 +31,7 @@ export const projects: Project[] = [
     demoUrl: 'https://securefm-soc.vercel.app',
     githubUrl: 'https://github.com/Manumost93/Securefm-soc',
     status: 'completado',
+    glowRgb: '34,211,238',
   },
   {
     id: 3,
