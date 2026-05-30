@@ -14,6 +14,25 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
+    name: 'SecureFM SOC',
+    type: 'Cybersecurity / Fullstack',
+    typeColor: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/20',
+    description:
+      'Plataforma fullstack de gestión de incidencias técnicas con panel SOC integrado. Autenticación JWT con roles (admin/technician/viewer), dashboard de eventos de seguridad en tiempo real, auditor web de cabeceras HTTP con puntuación de riesgo 0-100 y documentación OWASP Top 10.',
+    stack: ['React', 'TypeScript', 'Node.js', 'Express', 'SQLite', 'JWT', 'bcrypt', 'Helmet', 'OWASP'],
+    highlights: [
+      'Autenticación JWT con control de acceso por roles',
+      'Dashboard SOC con eventos de seguridad en tiempo real',
+      'Auditor pasivo de cabeceras HTTP (riesgo 0-100)',
+      'Backend con rate limiting, Helmet y validación OWASP',
+      'Desplegado en Vercel (frontend) + Render (API)',
+    ],
+    demoUrl: 'https://securefm-soc.vercel.app',
+    githubUrl: 'https://github.com/Manumost93/Securefm-soc',
+    status: 'completado',
+  },
+  {
+    id: 3,
     name: 'HistoLinea',
     type: 'Fullstack App',
     typeColor: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
@@ -32,7 +51,7 @@ export const projects: Project[] = [
     status: 'completado',
   },
   {
-    id: 2,
+    id: 4,
     name: 'Gestor de Mantenimiento',
     type: 'Facility Tech',
     typeColor: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
@@ -51,7 +70,7 @@ export const projects: Project[] = [
     status: 'completado',
   },
   {
-    id: 3,
+    id: 5,
     name: 'BMS Dashboard Demo',
     type: 'Smart Buildings',
     typeColor: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
@@ -70,7 +89,7 @@ export const projects: Project[] = [
     status: 'en-desarrollo',
   },
   {
-    id: 4,
+    id: 6,
     name: 'Portfolio Personal',
     type: 'Personal Brand',
     typeColor: 'text-purple-400 bg-purple-400/10 border-purple-400/20',
@@ -89,7 +108,7 @@ export const projects: Project[] = [
     status: 'completado',
   },
   {
-    id: 5,
+    id: 7,
     name: 'AppMantenimiento Portable',
     type: 'App Portable',
     typeColor: 'text-orange-400 bg-orange-400/10 border-orange-400/20',
@@ -108,7 +127,7 @@ export const projects: Project[] = [
     status: 'completado',
   },
   {
-    id: 6,
+    id: 8,
     name: 'Negocio Fisioterapia',
     type: 'Salud & Reservas',
     typeColor: 'text-rose-400 bg-rose-400/10 border-rose-400/20',
