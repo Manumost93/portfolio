@@ -80,19 +80,23 @@ export default function Sidebar() {
       {/* Desktop sidebar */}
       <aside className="hidden lg:flex flex-col fixed left-0 top-0 h-screen w-60 z-40 py-6 border-r"
         style={{
-          background: 'rgba(6,8,11,0.88)',
-          borderColor: 'rgba(100,116,139,0.15)',
-          backdropFilter: 'blur(16px)',
-          boxShadow: '1px 0 0 rgba(148,163,184,0.04), 4px 0 24px rgba(0,0,0,0.4)',
+          background: 'linear-gradient(180deg, rgba(8,10,15,0.97) 0%, rgba(6,8,12,0.95) 60%, rgba(7,9,14,0.97) 100%)',
+          borderColor: 'rgba(148,163,184,0.12)',
+          backdropFilter: 'blur(20px)',
+          boxShadow: '1px 0 0 rgba(226,232,240,0.07), 2px 0 0 rgba(148,163,184,0.03), 8px 0 40px rgba(0,0,0,0.7)',
         }}>
         {/* Identity */}
         <div className="px-5 mb-8">
+          <div className="h-px w-full mb-4 rounded-full" style={{
+            background: 'linear-gradient(90deg, rgba(226,232,240,0.22) 0%, rgba(148,163,184,0.1) 60%, transparent 100%)',
+            boxShadow: '0 0 6px rgba(226,232,240,0.15)',
+          }} />
           <div className="flex items-center gap-2 mb-1">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-xs text-emerald-400 font-mono">online</span>
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" style={{ boxShadow: '0 0 6px rgba(52,211,153,0.7)' }} />
+            <span className="text-xs text-emerald-400 font-mono tracking-wide">online</span>
           </div>
-          <p className="text-slate-200 font-semibold text-sm leading-tight">{profile.name}</p>
-          <p className="text-slate-600 text-xs mt-0.5">{profile.subtitle}</p>
+          <p className="text-slate-100 font-semibold text-sm leading-tight">{profile.name}</p>
+          <p className="text-slate-500 text-xs mt-0.5">{profile.subtitle}</p>
         </div>
 
         {/* Divider metálico */}
@@ -112,9 +116,9 @@ export default function Sidebar() {
                   isActive ? 'text-slate-200' : 'text-slate-600 hover:text-slate-300'
                 }`}
                 style={isActive ? {
-                  background: 'rgba(148,163,184,0.14)',
-                  border: '1px solid rgba(203,213,225,0.35)',
-                  boxShadow: '0 1px 0 rgba(226,232,240,0.12) inset, 0 0 12px rgba(148,163,184,0.12)',
+                  background: 'linear-gradient(135deg, rgba(148,163,184,0.18) 0%, rgba(100,116,139,0.08) 100%)',
+                  border: '1px solid rgba(203,213,225,0.38)',
+                  boxShadow: '0 1px 0 rgba(241,245,249,0.2) inset, 0 -1px 0 rgba(0,0,0,0.3) inset, 0 0 16px rgba(148,163,184,0.14)',
                 } : {
                   border: '1px solid transparent',
                 }}
@@ -134,12 +138,12 @@ export default function Sidebar() {
         {/* Status */}
         <div className="px-5 mt-4">
           <div className="rounded-xl p-3" style={{
-            background: 'rgba(10,12,18,0.8)',
-            border: '1px solid rgba(100,116,139,0.18)',
-            boxShadow: '0 1px 0 rgba(203,213,225,0.04) inset',
+            background: 'linear-gradient(135deg, rgba(12,16,24,0.9) 0%, rgba(8,11,18,0.85) 100%)',
+            border: '1px solid rgba(148,163,184,0.18)',
+            boxShadow: '0 1px 0 rgba(226,232,240,0.1) inset, 0 -1px 0 rgba(0,0,0,0.4) inset, 0 4px 16px rgba(0,0,0,0.4)',
           }}>
-            <p className="text-xs text-slate-600 mb-1 font-mono">status</p>
-            <p className="text-xs text-emerald-400 font-mono leading-relaxed">
+            <p className="text-[10px] text-slate-600 mb-1 font-mono tracking-widest uppercase">status</p>
+            <p className="text-xs text-emerald-400 font-mono leading-relaxed" style={{ textShadow: '0 0 12px rgba(52,211,153,0.4)' }}>
               available_for_<br />opportunities
             </p>
           </div>

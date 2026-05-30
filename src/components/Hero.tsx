@@ -355,11 +355,11 @@ export default function Hero() {
       >
         <button
           onClick={() => scrollTo('projects')}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-200 text-sm font-medium transition-all active:scale-95"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-100 text-sm font-medium transition-all active:scale-95 hover:text-white"
           style={{
-            background: 'linear-gradient(135deg, rgba(71,85,105,0.8) 0%, rgba(51,65,85,0.9) 100%)',
-            border: '1px solid rgba(148,163,184,0.25)',
-            boxShadow: '0 1px 0 rgba(203,213,225,0.08) inset, 0 4px 16px rgba(0,0,0,0.3)',
+            background: 'linear-gradient(135deg, rgba(71,85,105,0.9) 0%, rgba(51,65,85,0.95) 100%)',
+            border: '1px solid rgba(203,213,225,0.3)',
+            boxShadow: '0 1px 0 rgba(241,245,249,0.18) inset, 0 -1px 0 rgba(0,0,0,0.4) inset, 0 4px 20px rgba(0,0,0,0.4)',
           }}
         >
           Ver proyectos
@@ -444,8 +444,8 @@ export default function Hero() {
             alt="Manuel Honrado Vega"
             className="w-52 h-52 rounded-full object-cover object-top relative z-10"
             style={{
-              border: '2px solid rgba(148,163,184,0.25)',
-              boxShadow: '0 0 40px rgba(148,163,184,0.12), 0 0 0 6px rgba(148,163,184,0.05)',
+              border: '2px solid rgba(203,213,225,0.35)',
+              boxShadow: '0 0 0 1px rgba(241,245,249,0.12), 0 0 40px rgba(148,163,184,0.2), 0 0 80px rgba(100,116,139,0.1)',
             }}
           />
           {/* Online dot */}

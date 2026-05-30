@@ -12,8 +12,13 @@
 }
 
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 8px rgba(148,163,184,0.4),  0 0 20px rgba(148,163,184,0.15); }
-  50%       { box-shadow: 0 0 16px rgba(203,213,225,0.6), 0 0 32px rgba(148,163,184,0.25); }
+  0%, 100% { box-shadow: 0 0 8px rgba(148,163,184,0.5),  0 0 20px rgba(148,163,184,0.2); }
+  50%       { box-shadow: 0 0 20px rgba(203,213,225,0.8), 0 0 40px rgba(148,163,184,0.35); }
+}
+
+@keyframes chrome-sweep {
+  0%   { background-position: -300% center; }
+  100% { background-position:  300% center; }
 }
 
 /* ── Base ───────────────────────────────────────────────────────────────────── */
@@ -26,11 +31,14 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: #080a0d;
+    background-color: #06080c;
     background-image:
-      radial-gradient(ellipse at 15% 10%, rgba(51, 65, 85, 0.4)  0%, transparent 55%),
-      radial-gradient(ellipse at 85% 90%, rgba(30, 41, 59, 0.45) 0%, transparent 55%),
-      radial-gradient(ellipse at 50% 50%, rgba(8,  10, 18, 0.7)  0%, transparent 80%);
+      linear-gradient(rgba(100,116,139,0.038) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100,116,139,0.038) 1px, transparent 1px),
+      radial-gradient(ellipse at 15% 10%, rgba(51, 65, 85, 0.55)  0%, transparent 55%),
+      radial-gradient(ellipse at 85% 90%, rgba(30, 41, 59, 0.6)  0%, transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(6, 8, 16, 0.75)   0%, transparent 80%);
+    background-size: 52px 52px, 52px 52px, auto, auto, auto;
     color: #e2e8f0;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -44,26 +52,29 @@
 
 @layer components {
   .card-metal {
-    background: rgba(14, 17, 26, 0.82);
-    border: 1px solid rgba(148, 163, 184, 0.28);
+    background: linear-gradient(160deg, rgba(16, 20, 30, 0.92) 0%, rgba(10, 13, 20, 0.88) 100%);
+    border: 1px solid rgba(148, 163, 184, 0.2);
     box-shadow:
-      0 1px 0 rgba(226, 232, 240, 0.14) inset,
-      0 -1px 0 rgba(0, 0, 0, 0.4) inset,
-      0 0 20px rgba(148, 163, 184, 0.07),
-      0 4px 32px rgba(0, 0, 0, 0.5),
-      0 1px 4px rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(14px);
-    transition: border-color 0.2s, box-shadow 0.2s;
+      0 1px 0 rgba(226, 232, 240, 0.32) inset,
+      0 -1px 0 rgba(0, 0, 0, 0.55) inset,
+      1px 0 0 rgba(203, 213, 225, 0.06) inset,
+      0 0 0 rgba(148, 163, 184, 0.0),
+      0 6px 48px rgba(0, 0, 0, 0.6),
+      0 1px 6px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(18px);
+    transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
   }
 
   .card-metal:hover {
-    border-color: rgba(203, 213, 225, 0.5);
+    background: linear-gradient(160deg, rgba(20, 25, 38, 0.94) 0%, rgba(13, 17, 26, 0.90) 100%);
+    border-color: rgba(203, 213, 225, 0.42);
     box-shadow:
-      0 1px 0 rgba(226, 232, 240, 0.25) inset,
-      0 -1px 0 rgba(0, 0, 0, 0.45) inset,
-      0 0 28px rgba(148, 163, 184, 0.18),
-      0 8px 40px rgba(0, 0, 0, 0.55),
-      0 0 0 1px rgba(203, 213, 225, 0.12);
+      0 1px 0 rgba(241, 245, 249, 0.42) inset,
+      0 -1px 0 rgba(0, 0, 0, 0.55) inset,
+      1px 0 0 rgba(203, 213, 225, 0.1) inset,
+      0 0 36px rgba(148, 163, 184, 0.16),
+      0 12px 56px rgba(0, 0, 0, 0.65),
+      0 0 0 1px rgba(203, 213, 225, 0.09);
   }
 
   .border-chrome {
@@ -98,7 +109,7 @@
   }
 
   .text-metal {
-    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 35%, #f8fafc 65%, #94a3b8 100%);
+    background: linear-gradient(135deg, #94a3b8 0%, #e2e8f0 22%, #ffffff 48%, #e2e8f0 62%, #94a3b8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -106,15 +117,39 @@
 
   .shimmer {
     background: linear-gradient(90deg,
-      transparent          0%,
-      rgba(226,232,240,.22) 50%,
-      transparent          100%
+      transparent           0%,
+      rgba(226,232,240,.28) 50%,
+      transparent           100%
     );
     background-size: 200% auto;
     animation: shimmer 2s linear infinite;
   }
 
+  .chrome-sweep {
+    background: linear-gradient(90deg,
+      transparent           0%,
+      rgba(241,245,249,.18) 40%,
+      rgba(255,255,255,.32) 50%,
+      rgba(241,245,249,.18) 60%,
+      transparent           100%
+    );
+    background-size: 300% auto;
+    animation: chrome-sweep 3.5s linear infinite;
+  }
+
   .glow-active {
     animation: glow-pulse 2.5s ease-in-out infinite;
+  }
+
+  .chrome-edge-top {
+    position: relative;
+  }
+  .chrome-edge-top::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 12%; right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(226,232,240,0.55) 40%, rgba(255,255,255,0.7) 50%, rgba(226,232,240,0.55) 60%, transparent);
+    border-radius: 50%;
   }
 }
