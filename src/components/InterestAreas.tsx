@@ -31,7 +31,7 @@ export default function InterestAreas() {
             >
               <GlowCard
                 className="card-metal rounded-2xl p-5 h-full transition-all"
-                glowColor="148,163,184"
+                glowColor={area.glowRgb ?? '148,163,184'}
               >
                 <div className={`inline-flex p-2.5 rounded-xl border mb-4 ${area.color}`}>
                   <Icon size={18} />
