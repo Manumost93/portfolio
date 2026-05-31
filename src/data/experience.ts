@@ -15,6 +15,7 @@ export interface EducationItem {
   period: string;
   description: string;
   extras: string[];
+  logo?: string;
 }
 
 export const experience: ExperienceItem[] = [
@@ -167,6 +168,7 @@ export const education: EducationItem[] = [
     degree: 'Desarrollo de Aplicaciones Multiplataforma – DAM',
     institution: 'Universidad Alfonso X el Sabio',
     period: '2023 – 2025',
+    logo: '/certs/logo-uax.jpg',
     description:
       'Formación orientada al desarrollo de aplicaciones, programación, bases de datos, interfaces, acceso a datos, sistemas de gestión empresarial y proyecto final.',
     extras: [

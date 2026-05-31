@@ -24,8 +24,12 @@ export default function Education() {
             className="card-metal rounded-2xl p-6"
           >
             <div className="flex items-start gap-4">
-              <div className="p-2.5 rounded-xl border border-blue-400/20 bg-blue-400/10 text-blue-400 shrink-0">
-                <GraduationCap size={18} />
+              <div className="w-11 h-11 rounded-xl border border-blue-400/20 bg-blue-400/10 shrink-0 flex items-center justify-center overflow-hidden">
+                {item.logo ? (
+                  <img src={item.logo} alt={item.institution} className="w-full h-full object-contain p-1" />
+                ) : (
+                  <GraduationCap size={18} className="text-blue-400" />
+                )}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
