@@ -117,6 +117,7 @@ export const certifications: CertificationItem[] = [
     issuer: 'Education IT',
     period: '2022 – 2023',
     color: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
+    url: 'https://www.educacionit.com/perfil/manuel-honrado-vega-1035488/certificado/73593',
     logo: 'https://www.educacionit.com/favicon.ico',
   },
   {
