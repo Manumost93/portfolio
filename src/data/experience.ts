@@ -154,6 +154,11 @@ export const supplementaryCourses: SupplementaryCourse[] = [
     issuer: 'Santander Open Academy',
     url: '/certs/ciencia-datos-santander.pdf',
   },
+  {
+    name: 'IA y Productividad',
+    issuer: 'Google',
+    url: '/certs/Certificado google inteligencia artificial y productividad.pdf',
+  },
 ];
 
 export const education: EducationItem[] = [
