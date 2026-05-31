@@ -92,7 +92,7 @@ export const certifications: CertificationItem[] = [
     period: '2024',
     color: 'text-purple-400 bg-purple-400/10 border-purple-400/20',
     url: '/certs/bigdata-uax.pdf',
-    logo: 'https://www.uax.com/themes/custom/uax/favicon.ico',
+    logo: '/certs/logo-uax.jpg',
   },
   {
     id: 3,
@@ -119,7 +119,7 @@ export const certifications: CertificationItem[] = [
     period: '2022 – 2023',
     color: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
     url: 'https://www.educacionit.com/perfil/manuel-honrado-vega-1035488/certificado/73593',
-    logo: 'https://www.educacionit.com/favicon.ico',
+    logo: '/certs/logo-educacionit.jpg',
   },
   {
     id: 6,
@@ -128,7 +128,7 @@ export const certifications: CertificationItem[] = [
     period: '2022 – 2023',
     color: 'text-red-400 bg-red-400/10 border-red-400/20',
     url: 'https://www.educacionit.com/perfil/Manuel-Honrado-Vega-1035488/certificado/78303',
-    logo: 'https://www.educacionit.com/favicon.ico',
+    logo: '/certs/logo-educacionit.jpg',
   },
 ];
 
