@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, BookOpen, Award, ExternalLink } from 'lucide-react';
-import { education, certifications } from '../data/experience';
+import { GraduationCap, BookOpen, Award, ExternalLink, FileText } from 'lucide-react';
+import { education, certifications, supplementaryCourses } from '../data/experience';
 import SectionHeader from './SectionHeader';
 
 export default function Education() {
@@ -125,6 +125,36 @@ export default function Education() {
               </motion.div>
             );
           })}
+        </div>
+      </motion.div>
+
+      {/* Formación complementaria */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="mt-6"
+      >
+        <p className="text-[10px] font-mono uppercase tracking-widest text-slate-600 mb-3">
+          Formación complementaria
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {supplementaryCourses.map((course) => (
+            <a
+              key={course.name}
+              href={course.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] text-slate-500 hover:text-slate-300 transition-all group"
+              style={{ background: 'rgba(15,18,26,0.7)', border: '1px solid rgba(100,116,139,0.15)' }}
+            >
+              <FileText size={10} className="shrink-0 group-hover:text-slate-400 transition-colors" />
+              <span>{course.name}</span>
+              <span className="text-slate-700 group-hover:text-slate-500 transition-colors">· {course.issuer}</span>
+              <ExternalLink size={8} className="ml-0.5 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+            </a>
+          ))}
         </div>
       </motion.div>
     </section>

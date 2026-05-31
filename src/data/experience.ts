@@ -132,6 +132,30 @@ export const certifications: CertificationItem[] = [
   },
 ];
 
+export interface SupplementaryCourse {
+  name: string;
+  issuer: string;
+  url: string;
+}
+
+export const supplementaryCourses: SupplementaryCourse[] = [
+  {
+    name: 'Introducción al Desarrollo Web',
+    issuer: 'Google Activate',
+    url: '/certs/google-activate.pdf',
+  },
+  {
+    name: 'Ethical Hacking',
+    issuer: 'Hacker X',
+    url: '/certs/ethical-hacking.pdf',
+  },
+  {
+    name: 'Ciencia de Datos',
+    issuer: 'Santander Open Academy',
+    url: '/certs/ciencia-datos-santander.pdf',
+  },
+];
+
 export const education: EducationItem[] = [
   {
     id: 1,
