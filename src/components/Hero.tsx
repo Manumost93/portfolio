@@ -52,51 +52,6 @@ function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 }
 
-// ─── HeroOrb ──────────────────────────────────────────────────────────────────
-
-function HeroOrb() {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handler = (e: globalThis.MouseEvent) => {
-      const rect = ref.current?.getBoundingClientRect();
-      if (!rect) return;
-      setMouse({
-        x: ((e.clientX - rect.left) / rect.width - 0.5) * 30,
-        y: ((e.clientY - rect.top) / rect.height - 0.5) * 30,
-      });
-    };
-    window.addEventListener('mousemove', handler);
-    return () => window.removeEventListener('mousemove', handler);
-  }, []);
-
-  return (
-    <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div
-        className="absolute w-[500px] h-[500px] rounded-full opacity-20 blur-3xl"
-        style={{
-          background: 'radial-gradient(circle, #94a3b8 0%, #334155 50%, transparent 70%)',
-          top: '5%',
-          right: '-10%',
-          transform: `translate(${mouse.x}px, ${mouse.y}px)`,
-          transition: 'transform 0.3s ease-out',
-        }}
-      />
-      <div
-        className="absolute w-[300px] h-[300px] rounded-full opacity-15 blur-2xl"
-        style={{
-          background: 'radial-gradient(circle, #cbd5e1 0%, transparent 70%)',
-          bottom: '10%',
-          left: '5%',
-          transform: `translate(${-mouse.x * 0.5}px, ${-mouse.y * 0.5}px)`,
-          transition: 'transform 0.4s ease-out',
-        }}
-      />
-    </div>
-  );
-}
-
 // ─── HackingTerminal ──────────────────────────────────────────────────────────
 
 type LineType = 'normal' | 'error' | 'success' | 'data' | 'progress';
