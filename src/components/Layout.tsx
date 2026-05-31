@@ -17,7 +17,7 @@ export default function Layout({ children }: LayoutProps) {
         backgroundPosition: 'center',
       }} />
       <div className="fixed inset-0 z-0 pointer-events-none" style={{
-        background: 'linear-gradient(rgba(6,7,11,0.82), rgba(5,6,10,0.78) 40%, rgba(6,7,11,0.86))',
+        background: 'rgba(6,7,11,0.83)',
       }} />
 
       <MagneticCursor />

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown, Mail, Download, ChevronRight } from 'lucide-react';
 import { profile } from '../data/profile';
@@ -252,8 +252,6 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-[85vh] flex flex-col justify-center py-12">
-      <HeroOrb />
-
       <div className="flex flex-col lg:flex-row lg:items-center lg:gap-16">
       {/* ── Left: all content ── */}
       <div className="flex-1 min-w-0">
@@ -274,7 +272,7 @@ export default function Hero() {
             className="w-28 h-28 rounded-full object-cover object-top relative z-10"
             style={{ border: '2px solid rgba(148,163,184,0.3)', boxShadow: '0 0 24px rgba(148,163,184,0.15)' }}
           />
-          <span className="absolute bottom-1 right-1 z-20 w-4 h-4 rounded-full bg-emerald-400 border-2 border-[#080a0d]" />
+          <span className="absolute bottom-1 right-1 z-20 w-4 h-4 rounded-full bg-emerald-400 border-2 border-[#06070b]" />
         </div>
       </motion.div>
 
@@ -313,7 +311,7 @@ export default function Hero() {
           {scrambleDone ? (
             <>
               Manuel{' '}
-              <span className="text-metal" style={{ filter: 'drop-shadow(0 0 18px rgba(203,213,225,0.5))' }}>
+              <span className="text-metal">
                 Honrado
               </span>{' '}
               Vega
@@ -426,31 +424,18 @@ export default function Hero() {
         className="hidden lg:flex flex-col items-center shrink-0"
       >
         <div className="relative">
-          {/* Outer glow ring */}
-          <div className="absolute inset-0 rounded-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(148,163,184,0.18) 0%, transparent 70%)',
-              transform: 'scale(1.18)',
-            }}
-          />
-          {/* Spinning dashed ring */}
-          <svg className="absolute inset-0 w-full h-full animate-spin" style={{ animationDuration: '18s' }} viewBox="0 0 220 220">
-            <circle cx="110" cy="110" r="106" fill="none" stroke="rgba(148,163,184,0.18)" strokeWidth="1" strokeDasharray="6 10" />
-          </svg>
-          {/* Photo */}
           <img
             src="/ImagenLikdn.png"
             alt="Manuel Honrado Vega"
-            className="w-52 h-52 rounded-full object-cover object-top relative z-10"
+            className="w-52 h-52 rounded-full object-cover object-top"
             style={{
-              border: '2px solid rgba(203,213,225,0.35)',
-              boxShadow: '0 0 0 1px rgba(241,245,249,0.12), 0 0 40px rgba(148,163,184,0.2), 0 0 80px rgba(100,116,139,0.1)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              boxShadow: '0 0 48px rgba(0,0,0,0.6)',
             }}
           />
-          {/* Online dot */}
-          <span className="absolute bottom-3 right-3 z-20 flex items-center justify-center w-6 h-6 rounded-full bg-[#080a0d]"
-            style={{ border: '2px solid rgba(52,211,153,0.5)' }}>
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="absolute bottom-3 right-3 flex items-center justify-center w-5 h-5 rounded-full bg-[#06070b]"
+            style={{ border: '1.5px solid rgba(52,211,153,0.4)' }}>
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
           </span>
         </div>
         {/* Name below photo */}

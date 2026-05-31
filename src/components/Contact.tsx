@@ -7,7 +7,6 @@ import SectionHeader from './SectionHeader';
 const links = [
   {
     label: 'Email',
-    // TODO: sustituye profile.email con tu dirección real: mailto:tu@email.com
     href: profile.email,
     icon: Mail,
     color: 'hover:border-blue-500/40 hover:text-blue-400',
@@ -15,7 +14,6 @@ const links = [
   },
   {
     label: 'LinkedIn',
-    // TODO: sustituye profile.linkedin con tu URL real de LinkedIn
     href: profile.linkedin,
     icon: LinkedinIcon,
     color: 'hover:border-blue-600/40 hover:text-blue-500',
@@ -24,7 +22,6 @@ const links = [
   },
   {
     label: 'GitHub',
-    // TODO: sustituye profile.github con tu URL real de GitHub
     href: profile.github,
     icon: GithubIcon,
     color: 'hover:border-slate-400/40 hover:text-slate-200',
@@ -33,7 +30,6 @@ const links = [
   },
   {
     label: 'Descargar CV',
-    // TODO: añade el PDF en /public/CV_Manuel_Honrado.pdf
     href: profile.cv,
     icon: Download,
     color: 'hover:border-emerald-500/40 hover:text-emerald-400',

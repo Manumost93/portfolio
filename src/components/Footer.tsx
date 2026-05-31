@@ -14,9 +14,7 @@ export default function Footer() {
           © {year} · Desarrollado con React, TypeScript y Tailwind CSS
         </p>
         <div className="flex items-center gap-3">
-          {/* TODO: sustituye con tu GitHub real */}
           <a href={profile.github} target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-400 text-xs transition">GitHub</a>
-          {/* TODO: sustituye con tu LinkedIn real */}
           <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-400 text-xs transition">LinkedIn</a>
         </div>
       </div>
