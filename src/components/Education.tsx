@@ -72,7 +72,7 @@ export default function Education() {
           <span className="text-xs font-mono uppercase tracking-widest text-amber-400">Certificaciones y bootcamps</span>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid sm:grid-cols-2 gap-4">
           {certifications.map((cert, i) => {
             const CardWrapper = cert.url ? 'a' : 'div';
             const wrapperProps = cert.url
@@ -81,44 +81,61 @@ export default function Education() {
             return (
               <motion.div
                 key={cert.id}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
+                transition={{ duration: 0.45, delay: i * 0.07 }}
                 whileHover={{ y: -2 }}
               >
                 <CardWrapper
                   {...wrapperProps}
-                  className={`card-metal rounded-xl p-4 transition-all block h-full ${cert.url ? 'hover:border-slate-400/50 cursor-pointer group' : 'hover:border-slate-500/40'}`}
+                  className={`card-metal rounded-2xl p-5 transition-all block h-full relative overflow-hidden ${cert.url ? 'hover:border-slate-400/50 cursor-pointer group' : 'hover:border-slate-500/40'}`}
                 >
-                  {/* Header: badge chip + logo */}
-                  <div className="flex items-start justify-between gap-2 mb-3">
-                    <div className={`inline-flex items-center gap-1.5 text-[10px] font-mono border px-2 py-0.5 rounded-full ${cert.color}`}>
-                      <Award size={9} />
-                      Certificado
-                    </div>
-                    {cert.logo && (
-                      <img
-                        src={cert.logo}
-                        alt={cert.issuer}
-                        className="w-7 h-7 rounded-md object-contain shrink-0"
-                        style={{ background: 'rgba(255,255,255,0.06)', padding: '3px' }}
-                        onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                      />
-                    )}
-                  </div>
+                  {/* Left color accent bar */}
+                  <div className={`absolute left-0 top-4 bottom-4 w-0.5 rounded-r-full ${cert.color.split(' ')[2].replace('border-', 'bg-')}`}
+                    style={{ opacity: 0.6 }} />
 
-                  {/* Title */}
-                  <p className="text-slate-200 text-xs font-semibold leading-snug mb-1">{cert.name}</p>
-
-                  {/* Footer: issuer + period + verify link */}
-                  <div className="flex items-center justify-between mt-2 gap-1">
-                    <p className="text-slate-500 text-[10px] truncate">{cert.issuer}</p>
-                    <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="text-slate-600 text-[10px] font-mono">{cert.period}</span>
-                      {cert.url && (
-                        <ExternalLink size={9} className="text-slate-600 group-hover:text-slate-400 transition-colors" />
+                  <div className="flex items-start gap-4 pl-3">
+                    {/* Logo */}
+                    <div className={`shrink-0 w-11 h-11 rounded-xl flex items-center justify-center border ${cert.color}`}
+                      style={{ background: 'rgba(10,13,20,0.8)' }}>
+                      {cert.logo ? (
+                        <img
+                          src={cert.logo}
+                          alt={cert.issuer}
+                          className="w-7 h-7 object-contain"
+                          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                        />
+                      ) : (
+                        <Award size={16} className={cert.color.split(' ')[0]} />
                       )}
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-2 mb-1">
+                        <h3 className="text-slate-200 font-semibold text-sm leading-snug">{cert.name}</h3>
+                        <span className="text-slate-600 text-[10px] font-mono shrink-0">{cert.period}</span>
+                      </div>
+                      <p className="text-slate-400 text-xs mb-3">{cert.issuer}</p>
+
+                      <div className="flex items-center gap-2">
+                        <span className={`inline-flex items-center gap-1 text-[10px] font-mono border px-2 py-0.5 rounded-full ${cert.color}`}>
+                          <Award size={8} />
+                          Certificado
+                        </span>
+                        {cert.url && (
+                          <span className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400 border border-emerald-400/20 bg-emerald-400/10 px-2 py-0.5 rounded-full">
+                            <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                            Verificado
+                          </span>
+                        )}
+                        {cert.url && (
+                          <span className="ml-auto flex items-center gap-1 text-[10px] text-slate-600 group-hover:text-slate-300 transition-colors">
+                            Ver certificado <ExternalLink size={9} />
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </CardWrapper>
