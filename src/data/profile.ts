@@ -12,5 +12,5 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/manuel-honrado-desarrollador',
   github: 'https://github.com/Manumost93',
   cv: '/CV_Manuel_Honrado.pdf',
-  cvEnabled: true,
+  cvEnabled: false,
 };
