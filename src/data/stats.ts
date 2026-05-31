@@ -16,13 +16,13 @@ export const stats: Stat[] = [
     color: 'text-blue-400',
   },
   {
-    value: '6+',
+    value: '7+',
     label: 'Proyectos completados',
     icon: FolderGit2,
     color: 'text-emerald-400',
   },
   {
-    value: '10+',
+    value: '20+',
     label: 'Tecnologías trabajadas',
     icon: Cpu,
     color: 'text-amber-400',

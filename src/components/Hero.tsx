@@ -69,7 +69,7 @@ const BOOT_SEQUENCE: Array<{ delay: number; line: TermLine }> = [
   { delay: 3950, line: { text: '[OK] Access granted ✓', type: 'success' } },
   { delay: 4550, line: { text: 'Loading developer profile...', type: 'normal' } },
   { delay: 5300, line: { text: 'name     → Manuel Honrado Vega', type: 'data' } },
-  { delay: 5900, line: { text: 'stack    → React · TS · .NET · SQL', type: 'data' } },
+  { delay: 5900, line: { text: 'stack    → React · TS · Node.js · .NET · SQL', type: 'data' } },
   { delay: 6500, line: { text: 'role     → Junior Fullstack Developer', type: 'data' } },
   { delay: 7100, line: { text: 'status   → available_for_opportunities ●', type: 'success' } },
 ];
