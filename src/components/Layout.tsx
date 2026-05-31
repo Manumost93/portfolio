@@ -10,6 +10,16 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen relative" style={{ background: '#06070b' }}>
+      {/* Baroque background — fixed, ultra-dark overlay */}
+      <div className="fixed inset-0 z-0 pointer-events-none" style={{
+        backgroundImage: "url('/bg-baroque.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }} />
+      <div className="fixed inset-0 z-0 pointer-events-none" style={{
+        background: 'linear-gradient(rgba(6,7,11,0.82), rgba(5,6,10,0.78) 40%, rgba(6,7,11,0.86))',
+      }} />
+
       <MagneticCursor />
       <ScrollProgress />
       <Sidebar />
