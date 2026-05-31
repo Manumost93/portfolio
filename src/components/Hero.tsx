@@ -355,22 +355,22 @@ export default function Hero() {
       >
         <button
           onClick={() => scrollTo('projects')}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-100 text-sm font-medium transition-all active:scale-95 hover:text-white"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-slate-200 text-sm font-medium transition-all hover:text-white active:scale-95"
           style={{
-            background: 'linear-gradient(135deg, rgba(71,85,105,0.9) 0%, rgba(51,65,85,0.95) 100%)',
-            border: '1px solid rgba(203,213,225,0.3)',
-            boxShadow: '0 1px 0 rgba(241,245,249,0.18) inset, 0 -1px 0 rgba(0,0,0,0.4) inset, 0 4px 20px rgba(0,0,0,0.4)',
+            background: 'rgba(255,255,255,0.07)',
+            border: '1px solid rgba(255,255,255,0.1)',
           }}
         >
           Ver proyectos
-          <ChevronRight size={15} />
+          <ChevronRight size={14} />
         </button>
 
         <a
           href={profile.email}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-300 text-sm font-medium transition-all active:scale-95 card-metal hover:border-slate-400/50"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-slate-400 hover:text-slate-200 text-sm font-medium transition-all active:scale-95"
+          style={{ border: '1px solid rgba(255,255,255,0.06)' }}
         >
-          <Mail size={15} />
+          <Mail size={14} />
           Contactar conmigo
         </a>
 
@@ -378,19 +378,18 @@ export default function Hero() {
           <a
             href={profile.cv}
             download
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-500 hover:text-slate-400 text-sm font-medium transition-all active:scale-95"
-            style={{ border: '1px solid rgba(100,116,139,0.15)' }}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-slate-600 hover:text-slate-400 text-sm font-medium transition-all active:scale-95"
+            style={{ border: '1px solid rgba(255,255,255,0.04)' }}
           >
-            <Download size={15} />
+            <Download size={14} />
             Descargar CV
           </a>
         ) : (
           <span
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-slate-700 text-sm font-medium cursor-not-allowed select-none"
-            style={{ border: '1px solid rgba(100,116,139,0.08)' }}
-            title="CV no disponible temporalmente"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-slate-700 text-sm font-medium cursor-not-allowed select-none"
+            style={{ border: '1px solid rgba(255,255,255,0.03)' }}
           >
-            <Download size={15} />
+            <Download size={14} />
             Descargar CV
           </span>
         )}

@@ -3,14 +3,14 @@ import { Menu, X, Terminal, User, BarChart2, FolderGit2, Cpu, Briefcase, Graduat
 import { profile } from '../data/profile';
 
 const navItems = [
-  { id: 'hero', label: 'Inicio', icon: Terminal },
-  { id: 'stats', label: 'Resumen', icon: BarChart2 },
-  { id: 'projects', label: 'Proyectos', icon: FolderGit2 },
-  { id: 'skills', label: 'Stack', icon: Cpu },
-  { id: 'interests', label: 'Intereses', icon: User },
+  { id: 'hero',       label: 'Inicio',      icon: Terminal },
+  { id: 'stats',      label: 'Resumen',     icon: BarChart2 },
+  { id: 'projects',   label: 'Proyectos',   icon: FolderGit2 },
+  { id: 'skills',     label: 'Stack',       icon: Cpu },
+  { id: 'interests',  label: 'Intereses',   icon: User },
   { id: 'experience', label: 'Experiencia', icon: Briefcase },
-  { id: 'education', label: 'Formación', icon: GraduationCap },
-  { id: 'contact', label: 'Contacto', icon: Mail },
+  { id: 'education',  label: 'Formación',   icon: GraduationCap },
+  { id: 'contact',    label: 'Contacto',    icon: Mail },
 ];
 
 function scrollTo(id: string) {
@@ -43,34 +43,38 @@ export default function Sidebar() {
   return (
     <>
       {/* Mobile top bar */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 border-b backdrop-blur-md"
-        style={{ background: 'rgba(8,10,13,0.95)', borderColor: 'rgba(100,116,139,0.2)' }}>
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-slate-200 font-semibold text-sm">{profile.name.split(' ')[0]} Honrado</span>
+      <header
+        className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-3.5"
+        style={{ background: 'rgba(6,7,11,0.95)', borderBottom: '1px solid rgba(255,255,255,0.05)', backdropFilter: 'blur(16px)' }}
+      >
+        <div className="flex items-center gap-2.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          <span className="text-slate-200 font-medium text-sm tracking-wide">{profile.name.split(' ')[0]} Honrado</span>
         </div>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-2 rounded-lg text-slate-500 hover:text-slate-200 hover:bg-slate-800/50 transition"
+          className="p-1.5 text-slate-500 hover:text-slate-200 transition"
           aria-label="Abrir menú"
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          {mobileOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
       </header>
 
       {/* Mobile dropdown */}
       {mobileOpen && (
-        <div className="lg:hidden fixed top-[52px] left-0 right-0 z-40 border-b backdrop-blur-md py-2"
-          style={{ background: 'rgba(8,10,13,0.98)', borderColor: 'rgba(100,116,139,0.2)' }}>
+        <div
+          className="lg:hidden fixed top-[52px] left-0 right-0 z-40 py-2"
+          style={{ background: 'rgba(6,7,11,0.98)', borderBottom: '1px solid rgba(255,255,255,0.05)', backdropFilter: 'blur(16px)' }}
+        >
           {navItems.map(({ id, label, icon: Icon }) => (
             <button
               key={id}
               onClick={() => { scrollTo(id); setMobileOpen(false); }}
               className={`flex items-center gap-3 w-full px-5 py-3 text-sm transition text-left ${
-                active === id ? 'text-slate-200 bg-slate-800/40' : 'text-slate-500 hover:text-slate-200 hover:bg-slate-800/30'
+                active === id ? 'text-slate-200' : 'text-slate-600 hover:text-slate-300'
               }`}
             >
-              <Icon size={15} className={active === id ? 'text-slate-300' : 'text-slate-600'} />
+              <Icon size={14} className={active === id ? 'text-slate-400' : 'text-slate-700'} />
               {label}
             </button>
           ))}
@@ -78,31 +82,26 @@ export default function Sidebar() {
       )}
 
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex flex-col fixed left-0 top-0 h-screen w-60 z-40 py-6 border-r"
+      <aside
+        className="hidden lg:flex flex-col fixed left-0 top-0 h-screen w-60 z-40 py-8"
         style={{
-          background: 'linear-gradient(180deg, rgba(8,10,15,0.97) 0%, rgba(6,8,12,0.95) 60%, rgba(7,9,14,0.97) 100%)',
-          borderColor: 'rgba(148,163,184,0.12)',
+          background: 'rgba(5,6,10,0.92)',
+          borderRight: '1px solid rgba(255,255,255,0.045)',
           backdropFilter: 'blur(20px)',
-          boxShadow: '1px 0 0 rgba(226,232,240,0.07), 2px 0 0 rgba(148,163,184,0.03), 8px 0 40px rgba(0,0,0,0.7)',
-        }}>
+        }}
+      >
         {/* Identity */}
-        <div className="px-5 mb-8">
-          <div className="h-px w-full mb-4 rounded-full" style={{
-            background: 'linear-gradient(90deg, rgba(226,232,240,0.22) 0%, rgba(148,163,184,0.1) 60%, transparent 100%)',
-            boxShadow: '0 0 6px rgba(226,232,240,0.15)',
-          }} />
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" style={{ boxShadow: '0 0 6px rgba(52,211,153,0.7)' }} />
-            <span className="text-xs text-emerald-400 font-mono tracking-wide">online</span>
+        <div className="px-6 mb-10">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span className="text-[10px] text-emerald-500 font-mono tracking-widest uppercase">online</span>
           </div>
           <p className="text-slate-100 font-semibold text-sm leading-tight">{profile.name}</p>
-          <p className="text-slate-500 text-xs mt-0.5">{profile.subtitle}</p>
+          <p className="text-slate-600 text-xs mt-0.5">{profile.subtitle}</p>
         </div>
 
-        {/* Divider metálico */}
-        <div className="mx-5 h-px mb-6" style={{
-          background: 'linear-gradient(90deg, transparent, rgba(100,116,139,0.3), transparent)',
-        }} />
+        {/* Divider */}
+        <div className="mx-6 mb-6 h-px" style={{ background: 'rgba(255,255,255,0.05)' }} />
 
         {/* Nav */}
         <nav className="flex-1 px-3 space-y-0.5">
@@ -112,38 +111,34 @@ export default function Sidebar() {
               <button
                 key={id}
                 onClick={() => scrollTo(id)}
-                className={`relative flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm text-left transition-all group ${
+                className={`relative flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm text-left transition-all ${
                   isActive ? 'text-slate-200' : 'text-slate-600 hover:text-slate-300'
                 }`}
                 style={isActive ? {
-                  background: 'linear-gradient(135deg, rgba(148,163,184,0.18) 0%, rgba(100,116,139,0.08) 100%)',
-                  border: '1px solid rgba(203,213,225,0.38)',
-                  boxShadow: '0 1px 0 rgba(241,245,249,0.2) inset, 0 -1px 0 rgba(0,0,0,0.3) inset, 0 0 16px rgba(148,163,184,0.14)',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.07)',
                 } : {
                   border: '1px solid transparent',
                 }}
               >
                 {isActive && (
-                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 rounded-r-full"
-                    style={{ background: 'linear-gradient(180deg, #f1f5f9, #94a3b8)', boxShadow: '0 0 8px rgba(203,213,225,0.8)' }} />
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-4 rounded-r-full bg-slate-400" />
                 )}
-                <Icon size={15} className={isActive ? 'text-slate-200' : 'text-slate-700 group-hover:text-slate-500 transition'} />
+                <Icon size={14} className={isActive ? 'text-slate-300' : 'text-slate-700 group-hover:text-slate-500 transition'} />
                 {label}
-                {isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-slate-300" style={{ boxShadow: '0 0 6px rgba(203,213,225,0.9)' }} />}
               </button>
             );
           })}
         </nav>
 
         {/* Status */}
-        <div className="px-5 mt-4">
-          <div className="rounded-xl p-3" style={{
-            background: 'linear-gradient(135deg, rgba(12,16,24,0.9) 0%, rgba(8,11,18,0.85) 100%)',
-            border: '1px solid rgba(148,163,184,0.18)',
-            boxShadow: '0 1px 0 rgba(226,232,240,0.1) inset, 0 -1px 0 rgba(0,0,0,0.4) inset, 0 4px 16px rgba(0,0,0,0.4)',
+        <div className="px-6 mt-6">
+          <div className="rounded-lg px-3 py-3" style={{
+            background: 'rgba(255,255,255,0.03)',
+            border: '1px solid rgba(255,255,255,0.05)',
           }}>
-            <p className="text-[10px] text-slate-600 mb-1 font-mono tracking-widest uppercase">status</p>
-            <p className="text-xs text-emerald-400 font-mono leading-relaxed" style={{ textShadow: '0 0 12px rgba(52,211,153,0.4)' }}>
+            <p className="text-[9px] text-slate-700 mb-1 font-mono tracking-widest uppercase">status</p>
+            <p className="text-xs text-emerald-500 font-mono leading-relaxed">
               available_for_<br />opportunities
             </p>
           </div>
