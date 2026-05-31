@@ -33,7 +33,11 @@ export const techCategories: TechCategory[] = [
   },
   {
     name: 'Herramientas & Deploy',
-    items: ['Git', 'GitHub', 'Vercel', 'Render', 'VS Code', 'Postman'],
+    items: ['Git', 'GitHub', 'Vercel', 'Render', 'VS Code', 'Postman', 'Docker', 'Swagger'],
+  },
+  {
+    name: 'IA & Cloud',
+    items: ['ChatGPT', 'Claude AI', 'AWS Cloud', 'AWS Labs'],
   },
 ];
 

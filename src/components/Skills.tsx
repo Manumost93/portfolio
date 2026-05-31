@@ -29,6 +29,12 @@ const TECH_COLORS: Record<string, { color: string; bg: string; border: string }>
   Render:              { color: '#818cf8', bg: 'rgba(129,140,248,0.08)', border: 'rgba(129,140,248,0.28)' },
   'VS Code':           { color: '#38bdf8', bg: 'rgba(56,189,248,0.08)',  border: 'rgba(56,189,248,0.28)' },
   Postman:             { color: '#fb923c', bg: 'rgba(251,146,60,0.08)',  border: 'rgba(251,146,60,0.28)' },
+  Docker:              { color: '#38bdf8', bg: 'rgba(56,189,248,0.08)',  border: 'rgba(56,189,248,0.28)' },
+  Swagger:             { color: '#4ade80', bg: 'rgba(74,222,128,0.08)',  border: 'rgba(74,222,128,0.28)' },
+  ChatGPT:             { color: '#10b981', bg: 'rgba(16,185,129,0.08)',  border: 'rgba(16,185,129,0.28)' },
+  'Claude AI':         { color: '#f59e0b', bg: 'rgba(245,158,11,0.08)',  border: 'rgba(245,158,11,0.28)' },
+  'AWS Cloud':         { color: '#fb923c', bg: 'rgba(251,146,60,0.08)',  border: 'rgba(251,146,60,0.28)' },
+  'AWS Labs':          { color: '#fbbf24', bg: 'rgba(251,191,36,0.08)',  border: 'rgba(251,191,36,0.28)' },
 };
 
 const DEFAULT_STYLE = { color: '#94a3b8', bg: 'rgba(20,24,32,0.8)', border: 'rgba(100,116,139,0.2)' };
@@ -42,7 +48,7 @@ export default function Skills() {
         description="Tecnologías con las que trabajo en proyectos reales, organizadas por área."
       />
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
         {techCategories.map((cat, i) => (
           <motion.div
             key={cat.name}
