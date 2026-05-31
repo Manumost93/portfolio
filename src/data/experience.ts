@@ -40,13 +40,13 @@ export const experience: ExperienceItem[] = [
     title: 'Prácticas DAM',
     period: '2024 / 2025',
     description:
-      'Desarrollo de aplicaciones, trabajo con proyectos de software, bases de datos, APIs, frontend y backend en el marco del ciclo formativo de Desarrollo de Aplicaciones Multiplataforma.',
+      'Prácticas fullstack en entorno profesional real. Participación en migración de microservicios, desarrollo backend, diseño y gestión de bases de datos, APIs REST y desarrollo frontend con React y TypeScript.',
     highlights: [
-      'Desarrollo de aplicaciones software',
-      'Bases de datos relacionales',
-      'APIs REST con ASP.NET Core',
+      'Migración de microservicios',
+      'Backend y APIs REST con ASP.NET Core',
+      'Diseño y gestión de bases de datos',
       'Frontend con React y TypeScript',
-      'Buenas prácticas de programación',
+      'Entorno profesional real de desarrollo',
     ],
     type: 'internship',
   },
