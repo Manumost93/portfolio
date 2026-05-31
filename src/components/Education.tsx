@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, BookOpen, Award } from 'lucide-react';
+import { GraduationCap, BookOpen, Award, ExternalLink } from 'lucide-react';
 import { education, certifications } from '../data/experience';
 import SectionHeader from './SectionHeader';
 
@@ -73,27 +73,58 @@ export default function Education() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {certifications.map((cert, i) => (
-            <motion.div
-              key={cert.id}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
-              whileHover={{ y: -2 }}
-              className="card-metal rounded-xl p-4 hover:border-slate-500/40 transition-all"
-            >
-              <div className={`inline-flex items-center gap-1.5 text-[10px] font-mono border px-2 py-0.5 rounded-full mb-3 ${cert.color}`}>
-                <Award size={9} />
-                Certificado
-              </div>
-              <p className="text-slate-200 text-xs font-semibold leading-snug mb-1">{cert.name}</p>
-              <div className="flex items-center justify-between mt-2">
-                <p className="text-slate-500 text-[10px]">{cert.issuer}</p>
-                <span className="text-slate-600 text-[10px] font-mono">{cert.period}</span>
-              </div>
-            </motion.div>
-          ))}
+          {certifications.map((cert, i) => {
+            const CardWrapper = cert.url ? 'a' : 'div';
+            const wrapperProps = cert.url
+              ? { href: cert.url, target: '_blank', rel: 'noopener noreferrer' }
+              : {};
+            return (
+              <motion.div
+                key={cert.id}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                whileHover={{ y: -2 }}
+              >
+                <CardWrapper
+                  {...wrapperProps}
+                  className={`card-metal rounded-xl p-4 transition-all block h-full ${cert.url ? 'hover:border-slate-400/50 cursor-pointer group' : 'hover:border-slate-500/40'}`}
+                >
+                  {/* Header: badge chip + logo */}
+                  <div className="flex items-start justify-between gap-2 mb-3">
+                    <div className={`inline-flex items-center gap-1.5 text-[10px] font-mono border px-2 py-0.5 rounded-full ${cert.color}`}>
+                      <Award size={9} />
+                      Certificado
+                    </div>
+                    {cert.logo && (
+                      <img
+                        src={cert.logo}
+                        alt={cert.issuer}
+                        className="w-7 h-7 rounded-md object-contain shrink-0"
+                        style={{ background: 'rgba(255,255,255,0.06)', padding: '3px' }}
+                        onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                      />
+                    )}
+                  </div>
+
+                  {/* Title */}
+                  <p className="text-slate-200 text-xs font-semibold leading-snug mb-1">{cert.name}</p>
+
+                  {/* Footer: issuer + period + verify link */}
+                  <div className="flex items-center justify-between mt-2 gap-1">
+                    <p className="text-slate-500 text-[10px] truncate">{cert.issuer}</p>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <span className="text-slate-600 text-[10px] font-mono">{cert.period}</span>
+                      {cert.url && (
+                        <ExternalLink size={9} className="text-slate-600 group-hover:text-slate-400 transition-colors" />
+                      )}
+                    </div>
+                  </div>
+                </CardWrapper>
+              </motion.div>
+            );
+          })}
         </div>
       </motion.div>
     </section>

@@ -72,6 +72,8 @@ export interface CertificationItem {
   issuer: string;
   period: string;
   color: string;
+  url?: string;
+  logo?: string;
 }
 
 export const certifications: CertificationItem[] = [
@@ -81,6 +83,7 @@ export const certifications: CertificationItem[] = [
     issuer: 'Microsoft',
     period: '2024',
     color: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
   },
   {
     id: 2,
@@ -88,20 +91,25 @@ export const certifications: CertificationItem[] = [
     issuer: 'Universidad Alfonso X el Sabio',
     period: '2024',
     color: 'text-purple-400 bg-purple-400/10 border-purple-400/20',
+    logo: 'https://www.uax.com/themes/custom/uax/favicon.ico',
   },
   {
     id: 3,
-    name: 'Certificado en Java',
+    name: 'Certificado Universitario en Java',
     issuer: 'Universidad Europea',
-    period: '2023',
+    period: '2024',
     color: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
+    url: 'https://api.eu.badgr.io/public/assertions/4XBkA9j_Rwmb4oq1awdBmg',
+    logo: 'https://api.eu.badgr.io/public/assertions/4XBkA9j_Rwmb4oq1awdBmg/image',
   },
   {
     id: 4,
-    name: 'Certificado en Python',
+    name: 'Certificado Universitario en Python',
     issuer: 'Universidad Europea',
-    period: '2023',
+    period: '2024',
     color: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+    url: 'https://api.eu.badgr.io/public/assertions/gdXnrQBzRuSNGINbTo9QUw',
+    logo: 'https://api.eu.badgr.io/public/assertions/gdXnrQBzRuSNGINbTo9QUw/image',
   },
   {
     id: 5,
