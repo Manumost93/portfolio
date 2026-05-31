@@ -3,7 +3,6 @@ import Sidebar from './Sidebar';
 import AnimatedBackground from './AnimatedBackground';
 import ScrollProgress from './ScrollProgress';
 import MagneticCursor from './MagneticCursor';
-import MatrixRain from './MatrixRain';
 
 interface LayoutProps {
   children: ReactNode;
@@ -11,10 +10,9 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen relative" style={{ background: '#080a0d' }}>
+    <div className="min-h-screen relative" style={{ background: '#06080c' }}>
       <MagneticCursor />
       <ScrollProgress />
-      <MatrixRain />
       <AnimatedBackground />
       <Sidebar />
       <main className="lg:ml-60 pt-16 lg:pt-0 relative z-10">

@@ -33,15 +33,9 @@
     padding: 0;
     background-color: #06080c;
     background-image:
-      linear-gradient(rgba(4,6,10,0.91), rgba(4,6,10,0.88) 50%, rgba(6,8,12,0.93)),
-      linear-gradient(rgba(100,116,139,0.038) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(100,116,139,0.038) 1px, transparent 1px),
-      radial-gradient(ellipse at 15% 10%, rgba(51,65,85,0.55) 0%, transparent 55%),
-      radial-gradient(ellipse at 85% 90%, rgba(30,41,59,0.6) 0%, transparent 55%),
-      url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=55');
-    background-size: 100% 100%, 52px 52px, 52px 52px, auto, auto, cover;
-    background-attachment: scroll, scroll, scroll, scroll, scroll, fixed;
-    background-position: center, top left, top left, center, center, center;
+      radial-gradient(ellipse 80% 50% at 20% 0%, rgba(51,65,85,0.35) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(30,41,59,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 50% 50%, rgba(15,20,35,0.5) 0%, transparent 70%);
     color: #e2e8f0;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;

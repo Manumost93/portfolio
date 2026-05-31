@@ -22,8 +22,8 @@ export default function AnimatedBackground() {
 
     let animId: number;
     const particles: Particle[] = [];
-    const COUNT = 70;
-    const MAX_DIST = 160;
+    const COUNT = 38;
+    const MAX_DIST = 130;
 
     function resize() {
       if (!canvas) return;
@@ -35,10 +35,10 @@ export default function AnimatedBackground() {
       return {
         x: Math.random() * (canvas?.width ?? window.innerWidth),
         y: Math.random() * (canvas?.height ?? window.innerHeight),
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        radius: Math.random() * 1.8 + 0.5,
-        opacity: Math.random() * 0.55 + 0.2,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        radius: Math.random() * 1.2 + 0.4,
+        opacity: Math.random() * 0.35 + 0.1,
         silver: Math.random() > 0.3,
       };
     }
@@ -76,12 +76,12 @@ export default function AnimatedBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < MAX_DIST) {
-            const alpha = (1 - dist / MAX_DIST) * 0.18;
+            const alpha = (1 - dist / MAX_DIST) * 0.1;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
             ctx.strokeStyle = `rgba(148,163,184,${alpha})`;
-            ctx.lineWidth = 0.6;
+            ctx.lineWidth = 0.4;
             ctx.stroke();
           }
         }
