@@ -61,7 +61,7 @@ export default function Layout({ children }: LayoutProps) {
         />
       </div>
       <div className="fixed inset-0 z-0 pointer-events-none" style={{
-        background: 'rgba(6,7,11,0.83)',
+        background: 'rgba(6,7,11,0.74)',
       }} />
 
       <MagneticCursor />
