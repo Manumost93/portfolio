@@ -91,6 +91,7 @@ export const certifications: CertificationItem[] = [
     issuer: 'Universidad Alfonso X el Sabio',
     period: '2024',
     color: 'text-purple-400 bg-purple-400/10 border-purple-400/20',
+    url: '/certs/bigdata-uax.pdf',
     logo: 'https://www.uax.com/themes/custom/uax/favicon.ico',
   },
   {
