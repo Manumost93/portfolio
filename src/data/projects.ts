@@ -124,7 +124,7 @@ export const projects: Project[] = [
       'Diseño portable y ligero',
       'Orientado a técnicos de campo',
     ],
-    demoUrl: 'https://app-mantenimiento-sigma.vercel.app',
+    demoUrl: '#',
     githubUrl: 'https://github.com/Manumost93/AppMantenimiento',
     status: 'completado',
   },
